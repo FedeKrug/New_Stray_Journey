@@ -166,6 +166,7 @@ GameObject:
   - component: {fileID: 466678539}
   - component: {fileID: 466678538}
   - component: {fileID: 466678537}
+  - component: {fileID: 466678540}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -219,8 +220,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 12.7
+  m_AngularDrag: 8.84
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -278,6 +279,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &466678540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466678535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ae1403156c8fe34a9d9c9049b4bd221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseSpeed: 20
+  boostSpeed: 80
+  baseRotateSpeed: -180
+  maxRotateSpeed: -360
+  horizontalAxis: Horizontal
+  verticalAxis: Vertical
+  _fireAnim: {fileID: 0}
 --- !u!1 &643374392
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,6 +309,7 @@ GameObject:
   - component: {fileID: 643374395}
   - component: {fileID: 643374394}
   - component: {fileID: 643374393}
+  - component: {fileID: 643374396}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -314,7 +335,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.009433985, g: 0.009433985, b: 0.009433985, a: 0}
+  m_BackGroundColor: {r: 0.064969726, g: 0.08047282, b: 0.18867922, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -361,6 +382,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &643374396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643374392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad89163cec42a8488ce093bc9ae9ebf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 466678536}
+  dampTime: 1.5
 --- !u!1 &2080650765
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,12 +408,12 @@ GameObject:
   - component: {fileID: 2080650767}
   - component: {fileID: 2080650766}
   m_Layer: 0
-  m_Name: spritesheet_0 (1)
+  m_Name: Mini Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &2080650766
 Animator:
   serializedVersion: 3
