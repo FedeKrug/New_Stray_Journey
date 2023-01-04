@@ -20,6 +20,7 @@ namespace Game.Player
 		private Rigidbody2D _rb2d;
 		private Animator _anim;
 		[SerializeField] private Animator _fireAnim;
+		[SerializeField] private string _animBoostParameter;
 		private AudioSource _aSource;
 		private SpriteRenderer _spriteR;
 		private Vector2 _moveInput;
@@ -45,7 +46,7 @@ namespace Game.Player
 				speed = boostSpeed;
 				if (_fireAnim)
 				{
-					_fireAnim.SetBool("inBoost", true);
+					_fireAnim.SetBool(_animBoostParameter, true);
 
 				}
 				rotateSpeed = maxRotateSpeed;
@@ -57,7 +58,7 @@ namespace Game.Player
 				if (_fireAnim)
 				{
 
-					_fireAnim.SetBool("inBoost", false);
+					_fireAnim.SetBool(_animBoostParameter, false);
 				}
 				rotateSpeed = baseRotateSpeed;
 			}

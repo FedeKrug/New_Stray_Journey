@@ -16,16 +16,17 @@ public class DestroyBullet : MonoBehaviour
 		
 		yield return null;
 		Instantiate(_explosion, this.gameObject.transform);
-		yield return null;
 		_explosionASource.PlayOneShot(_explosionAudio);
+		//yield return new WaitForSeconds(0.2f);
+		_bulletToDestroy.SetActive(false);
 		yield return new WaitForSeconds(_explosionTime);
-		yield return new WaitForSeconds(_explosionTime);
+		//yield return new WaitForSeconds(_explosionTime);
 		Destroy(_bulletToDestroy);
 		Debug.Log("BulletDestroyed");
 	}
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.CompareTag("Enemy") /*|| collision.CompareTag ( "Destroyer")*/ || collision.CompareTag("Player"))
+		if (collision.CompareTag("Enemy") || collision.CompareTag("Player"))
 		{
 			StartCoroutine(DestroyBullets());
 		}
