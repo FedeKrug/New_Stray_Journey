@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-
+[DefaultExecutionOrder(-100)]
 public class EventManager : MonoBehaviour
 {
 	#region Singleton & Awake

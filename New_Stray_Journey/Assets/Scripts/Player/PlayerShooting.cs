@@ -37,7 +37,7 @@ namespace Game.Player
 							_timeRate = _maxTimeRate;
 
 							EventManager.instance.normalShootingEvent.Invoke(_bulletGens, _bullet);
-
+							Debug.Log("Shooting");
 						}
 					}
 					break;

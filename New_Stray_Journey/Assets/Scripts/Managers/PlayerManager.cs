@@ -61,6 +61,11 @@ namespace Game.Player
 					Debug.Log("Disparo");
 
 				}
+				else
+				{
+					Debug.Log("Out of bullets");
+
+				}
 			}
 		}
 		
