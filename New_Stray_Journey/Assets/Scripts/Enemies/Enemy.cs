@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Game.Player;
 
 
 namespace Game.Enemies
@@ -18,15 +18,8 @@ namespace Game.Enemies
 
 		void Awake()
 		{
-
+			idleTime = timeToSpecial;
 		}
-
-
-		void Update()
-		{
-
-		}
-
 
 		public abstract void Death(EnemyHealth enemyHealth);
 		protected abstract void Attack();
@@ -35,7 +28,7 @@ namespace Game.Enemies
 
 		protected void StaticDamage()
 		{
-			
+			PlayerManager.instance.TakeDamage(idleDamage);
 		}
 
 		public virtual IEnumerator ChargingSpecial()

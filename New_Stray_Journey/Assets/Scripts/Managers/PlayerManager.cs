@@ -27,29 +27,25 @@ namespace Game.Player
 		#endregion
 
 		#region Subscribe and Unsubscribe to EventManager
-		//private void OnEnable()
-		//{
-		//	EventManager.instance.normalShootingEvent.AddListener(ShootingHandler);
-		//	EventManager.instance.specialShootingEvent.AddListener(ShootingHandler);
-
-		//	EventManager.instance.shootPoolingNormal.AddListener(ShootingPoolingHandler);
-		//	EventManager.instance.shootPoolingSpecial.AddListener(ShootingPoolingHandler);
+		private void OnEnable()
+		{
+			EventManager.instance.normalShootingEvent.AddListener(ShootingHandler);
+			EventManager.instance.specialShootingEvent.AddListener(ShootingHandler);
 
 
-		//	EventManager.instance.playerDamagedEvent.AddListener(TakeDamage);
-		//	EventManager.instance.playerCuredEvent.AddListener(IncreaseHealth);
-		//}
-		//private void OnDisable()
-		//{
-		//	EventManager.instance.normalShootingEvent.RemoveListener(ShootingHandler);
-		//	EventManager.instance.specialShootingEvent.RemoveListener(ShootingHandler);
 
-		//	EventManager.instance.playerDamagedEvent.RemoveListener(TakeDamage);
-		//	EventManager.instance.playerCuredEvent.RemoveListener(IncreaseHealth);
+			EventManager.instance.playerDamagedEvent.AddListener(TakeDamage);
+			EventManager.instance.playerCuredEvent.AddListener(IncreaseHealth);
+		}
+		private void OnDisable()
+		{
+			EventManager.instance.normalShootingEvent.RemoveListener(ShootingHandler);
+			EventManager.instance.specialShootingEvent.RemoveListener(ShootingHandler);
 
-		//	EventManager.instance.shootPoolingNormal.RemoveListener(ShootingPoolingHandler);
-		//	EventManager.instance.shootPoolingSpecial.RemoveListener(ShootingPoolingHandler);
-		//}
+			EventManager.instance.playerDamagedEvent.RemoveListener(TakeDamage);
+			EventManager.instance.playerCuredEvent.RemoveListener(IncreaseHealth);
+
+		}
 
 		#endregion
 
@@ -67,17 +63,18 @@ namespace Game.Player
 				}
 			}
 		}
+		
 		public void TakeDamage(float damage)
 		{
 			_playerHealth.value -= damage;
 			Debug.Log("Player Damaged");
 			CheckDeath();
-		}
+		} 
 
 		public void IncreaseHealth(float healthBooster)
 		{
 			_playerHealth.value += healthBooster;
-		}
+		} 
 
 		public void CheckDeath()
 		{
@@ -92,19 +89,6 @@ namespace Game.Player
 		{
 			yield return new WaitForSeconds(2);
 		}
-		//public void ShootingPoolingHandler(List<GameObject> bulletGens)
-		//{
-		//	for (int i = 0; i < bulletGens.Count; i++)
-		//	{
-
-		//		GameObject _bullet = BulletPool.instance.RequestBullets();
-		//		_bullet.transform.position = bulletGens[i].transform.position;
-		//		_bullet.transform.rotation = bulletGens[i].transform.rotation;
-		//		Debug.Log("Disparo");
-		//		//aplicar object pooling para mejor performance
-
-		//	}
-		//}
 	}
 
 }
