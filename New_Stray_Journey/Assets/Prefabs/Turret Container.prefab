@@ -300,7 +300,7 @@ MonoBehaviour:
   enemyLife: {fileID: 7940353607566265867}
   inAttackRange: 0
   playerDetected: 0
-  speed: 180
+  speed: 5
   remainingTime: 0.8
   bulletGens:
   - {fileID: 7940353608113907988}

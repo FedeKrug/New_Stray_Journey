@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Game.SO;
-using System;
+
 
 namespace Game.Player
 {
@@ -11,8 +11,7 @@ namespace Game.Player
 		public static PlayerManager instance;
 		[SerializeField] private FloatSO _playerHealth;
 		[SerializeField] private PlayerDeath _playerDeathRef;
-		[SerializeField] private GameObject _particlesOfDamage;
-		bool rightShot = false;
+		
 		#region Singleton and Awake
 		private void Awake()
 		{
@@ -32,15 +31,12 @@ namespace Game.Player
 		{
 			EventManager.instance.normalShootingEvent.AddListener(ShootingHandler);
 			EventManager.instance.specialShootingEvent.AddListener(ShootingHandler);
-			EventManager.instance.alternativeShooting.AddListener(AlternativeShooting);
+
 
 
 			EventManager.instance.playerDamagedEvent.AddListener(TakeDamage);
 			EventManager.instance.playerCuredEvent.AddListener(IncreaseHealth);
 		}
-
-		
-
 		private void OnDisable()
 		{
 			EventManager.instance.normalShootingEvent.RemoveListener(ShootingHandler);
@@ -72,40 +68,11 @@ namespace Game.Player
 				}
 			}
 		}
-
-		private void AlternativeShooting(List<GameObject> bulletGenerators, GameObject bullet)
-		{
-			//for (int i = 0; i < bulletGenerators.Count; i++)
-			//{
-			//	if (bullet)
-			//	{
-			//		GameObject _bullet = Instantiate(bullet, bulletGenerators[i].transform.position, bulletGenerators[i].transform.rotation);
-			//		//GameObject _bullet = BulletPool.instance.RequestBullets();
-			//		_bullet.transform.position = bulletGenerators[i].transform.position;
-			//		Debug.Log("Disparo");
-
-			//	}
-			//	else
-			//	{
-			//		Debug.Log("Out of bullets");
-
-			//	}
-			//}
-			
-			for (int i =0; i<bulletGenerators.Count; i++)
-			{
-				if (i!=0)
-				{
-					rightShot = !rightShot;
-				}
-			}
-		}
-
+		
 		public void TakeDamage(float damage)
 		{
 			_playerHealth.value -= damage;
 			Debug.Log("Player Damaged");
-			_particlesOfDamage.SetActive(true);
 			CheckDeath();
 		} 
 

@@ -52,12 +52,7 @@ namespace Game.Player
 
 					}
 					break;
-				case ShootType.Alternative:
-					if (Input.GetKey(KeyCode.C))
-					{
 
-					}
-						break;
 			}
 			#endregion
 

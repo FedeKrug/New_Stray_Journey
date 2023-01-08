@@ -3,6 +3,5 @@
 	Automatic,
 	ArrowType,
 	Manual,
-	Alternative,
 	Special
 }
