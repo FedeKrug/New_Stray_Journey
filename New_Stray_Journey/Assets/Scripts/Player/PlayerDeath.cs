@@ -10,7 +10,7 @@ namespace Game.Player
 		[SerializeField] private GameObject _playerRef;
 		//[SerializeField] private Animator _anim;
 		//[SerializeField] private string _deathAnim;
-		[SerializeField] private GameObject _explosion;
+		[SerializeField] private GameObject _explosion, _particleSystem;
 		[SerializeField] private float _timeToDie;
 
 		public void Die()
@@ -21,7 +21,8 @@ namespace Game.Player
 		IEnumerator Death()
 		{
 			//_anim.Play(_deathAnim);
-			Instantiate(_explosion, _playerRef.transform);
+			//Instantiate(_explosion, _playerRef.transform);
+			_particleSystem.SetActive(true);
 			yield return new WaitForSeconds(_timeToDie);
 			_playerRef.SetActive(false);
 
