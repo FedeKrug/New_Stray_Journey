@@ -56,7 +56,6 @@ namespace Game.Player
 				if (bullet)
 				{
 					GameObject _bullet = Instantiate(bullet, bulletGenerators[i].transform.position, bulletGenerators[i].transform.rotation);
-					//GameObject _bullet = BulletPool.instance.RequestBullets();
 					_bullet.transform.position = bulletGenerators[i].transform.position;
 					Debug.Log("Disparo");
 
