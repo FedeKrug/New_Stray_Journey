@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
+using TMPro;
+
 
 [DefaultExecutionOrder(-100)]
 public class EventManager : MonoBehaviour
@@ -30,8 +33,10 @@ public class EventManager : MonoBehaviour
 	public HealthEvent playerDamagedEvent = new HealthEvent();
 	public HealthEvent playerCuredEvent = new HealthEvent();
 
+	public ScoreEvent scoreEvent = new ScoreEvent();
 
 }
 
 public class ShootEvent : UnityEvent<List<GameObject>, GameObject> { } //1- de donde sale el disparo 2- cual es el disparo
 public class HealthEvent : UnityEvent<float> { } //la vida que se le da o quita al personaje
+public class ScoreEvent : UnityEvent<string, TextMeshProUGUI> { }
