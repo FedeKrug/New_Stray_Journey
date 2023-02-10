@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Game.Player;
 
-
 namespace Game.Enemies
 {
 	public abstract class Enemy : MonoBehaviour
@@ -15,6 +14,7 @@ namespace Game.Enemies
 		//[SerializeField] protected EnemyRangeDetector rangeOfView;
 		protected bool inSpecial, specialReady;
 		public bool inAttackRange, playerDetected;
+
 
 		void Awake()
 		{
