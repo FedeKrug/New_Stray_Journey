@@ -17,20 +17,13 @@ namespace Game.Player
 		[SerializeField] private string horizontalAxis;
 		[SerializeField] private string verticalAxis;
 
-		private Rigidbody2D _rb2d;
+		public Rigidbody2D _rb2d;
 		private Animator _anim;
 		[SerializeField] private Animator _fireAnim;
 		[SerializeField] private string _animBoostParameter;
 		private AudioSource _aSource;
 		private SpriteRenderer _spriteR;
 		private Vector2 _moveInput;
-
-
-		void Awake()
-		{
-			_rb2d = GetComponent<Rigidbody2D>();
-		}
-
 
 		void Update()
 		{

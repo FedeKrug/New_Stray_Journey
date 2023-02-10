@@ -12,7 +12,7 @@ namespace Game.Enemies
 		protected float idleTime;
 		[SerializeField] protected EnemyHealth enemyLife;
 		//[SerializeField] protected EnemyRangeDetector rangeOfView;
-		protected bool inSpecial, specialReady;
+		public bool inSpecial, specialReady;
 		public bool inAttackRange, playerDetected;
 
 
@@ -26,7 +26,7 @@ namespace Game.Enemies
 		protected abstract void SpecialAttack();
 
 
-		protected void StaticDamage()
+		public void StaticDamage()
 		{
 			PlayerManager.instance.TakeDamage(idleDamage);
 		}

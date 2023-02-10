@@ -68,14 +68,7 @@ namespace Game.Enemies
 
 		private void OnTriggerEnter2D(Collider2D collision)
 		{
-			if (collision.CompareTag("Player"))
-			{
-				StaticDamage();
-				if (inSpecial)
-				{
-					StartCoroutine(ChargingSpecial());
-				}
-			}
+			
 		}
 	}
 }
