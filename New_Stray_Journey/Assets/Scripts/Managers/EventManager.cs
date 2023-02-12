@@ -12,8 +12,8 @@ public class EventManager : MonoBehaviour
 	#region Singleton & Awake
 	public static EventManager instance;
 
-    void Awake()
-    {
+	void Awake()
+	{
 		if (instance == null)
 		{
 			instance = this;
@@ -35,8 +35,11 @@ public class EventManager : MonoBehaviour
 
 	public ScoreEvent scoreEvent = new ScoreEvent();
 
+	public HookEvent playerHookEvent = new HookEvent();
+
 }
 
 public class ShootEvent : UnityEvent<List<GameObject>, GameObject> { } //1- de donde sale el disparo 2- cual es el disparo
 public class HealthEvent : UnityEvent<float> { } //la vida que se le da o quita al personaje
 public class ScoreEvent : UnityEvent<string, TextMeshProUGUI> { }
+public class HookEvent : UnityEvent<GameObject, GameObject> { }

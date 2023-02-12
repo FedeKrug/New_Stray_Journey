@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Game.SO;
-
+using System;
 
 namespace Game.Player
 {
@@ -32,11 +32,19 @@ namespace Game.Player
 			EventManager.instance.normalShootingEvent.AddListener(ShootingHandler);
 			EventManager.instance.specialShootingEvent.AddListener(ShootingHandler);
 
-
+			EventManager.instance.playerHookEvent.AddListener(HookEventHandler);
 
 			EventManager.instance.playerDamagedEvent.AddListener(TakeDamage);
 			EventManager.instance.playerCuredEvent.AddListener(IncreaseHealth);
 		}
+
+		private void HookEventHandler(GameObject hookOrigin, GameObject hook)
+		{
+			GameObject _hook = Instantiate(hook,hookOrigin.transform.position, hookOrigin.transform.rotation);
+			_hook.transform.position = hookOrigin.transform.position;
+			Debug.Log("Gancho");
+		}
+
 		private void OnDisable()
 		{
 			EventManager.instance.normalShootingEvent.RemoveListener(ShootingHandler);
@@ -44,6 +52,8 @@ namespace Game.Player
 
 			EventManager.instance.playerDamagedEvent.RemoveListener(TakeDamage);
 			EventManager.instance.playerCuredEvent.RemoveListener(IncreaseHealth);
+
+			EventManager.instance.playerHookEvent.RemoveListener(HookEventHandler);
 
 		}
 
