@@ -31,8 +31,3 @@ public class Bullet : MonoBehaviour
 
 	}
 }
-
-public class Hook : Bullet
-{
-	
-}
