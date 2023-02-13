@@ -6,43 +6,62 @@ using Game.Enemies;
 
 public class Hook : Bullet
 {
-	[SerializeField] private bool _onShoot, _objectGrabbed;
-	[SerializeField] private PlayerHook p;
+	public bool objectGrabbed;
+	public bool onLimit;
+	public bool onShoot;
+	
+	[SerializeField, Range(0, 100)] private float _hookGrabForce;
+
+
 
 	private void OnEnable()
 	{
-		_onShoot = true;
+		onShoot = true;
 	}
 
 	private void OnDisable()
 	{
-		_onShoot = false;
+		onShoot = false;
+		Debug.Log("Hook Disabled");
 	}
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.GetComponent<Interactable>() != null || collision.GetComponent<ActiveEnemy>() != null || 
+		if (collision.GetComponent<Interactable>() != null || collision.GetComponent<ActiveEnemy>() != null ||
 			collision.GetComponent<PassiveEnemy>() != null || collision.GetComponent<Collectable>() != null)
 		{
-			GrabEntity();
+			GrabEntity(collision.gameObject);
+		}
+		if (collision.CompareTag("Player"))
+		{
+			Debug.Log("Player Touched wit");
+			gameObject.SetActive(false);
 		}
 	}
 
 	IEnumerator GetOverHere(GameObject objectToGrab)
-	{ 
+	{
 
-		while (_onShoot)
+		while (!objectGrabbed || !onLimit)
 		{
 			yield return null;
-			objectToGrab.transform.position = this.transform.position;
+
 		}
+		if (objectGrabbed || onLimit)
+		{
+			//StartCoroutine(BringHookToPlayer());
 
-		Debug.Log($"");
+		}
+		Debug.Log($"agarre un nuevo Objeto o personaje");
 	}
 
-	public void GrabEntity()
+	
+
+	public void GrabEntity(GameObject objToGrab)
 	{
-		//var go  = 
-		_objectGrabbed = true;
-		//StartCoroutine(GetOverHere());
+		Debug.Log($"Agarro objeto");
+		objectGrabbed = true;
+		StartCoroutine(GetOverHere(objToGrab));
 	}
+
+
 }

@@ -10,9 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6506511640961080833}
   - component: {fileID: 6506511640961080834}
-  - component: {fileID: 6506511640961080835}
   m_Layer: 6
-  m_Name: Stray Journey_Bullets
+  m_Name: EnemyBullets_Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,22 +82,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &6506511640961080835
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6506511640961080832}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.15, y: 0.24}
-  m_Direction: 0
 --- !u!1 &6506511640988793597
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,6 +96,7 @@ GameObject:
   - component: {fileID: 6506511640988793569}
   - component: {fileID: 6506511640988793568}
   - component: {fileID: 6506511640988793599}
+  - component: {fileID: 222803322541885204}
   m_Layer: 6
   m_Name: EnemyBulletContainer
   m_TagString: Untagged
@@ -151,7 +135,7 @@ MonoBehaviour:
   speed: -80
   damageModifier: 1
   _maxTimeToDestroy: 3
-  _rb2d: {fileID: 6506511640988793568}
+  rb2d: {fileID: 6506511640988793568}
   _anim: {fileID: 6506511640988793599}
   _aSource: {fileID: 6506511640988793569}
 --- !u!114 &6506511640988793570
@@ -308,3 +292,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!70 &222803322541885204
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6506511640988793597}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.15, y: 0.24}
+  m_Direction: 0

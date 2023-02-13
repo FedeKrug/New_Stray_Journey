@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 1874458096428200815}
   - component: {fileID: 3082608667016607994}
   - component: {fileID: 8438192270565333487}
+  - component: {fileID: 4934285455379299069}
+  - component: {fileID: 1900001338951751193}
   m_Layer: 3
   m_Name: BulletContainer
   m_TagString: Untagged
@@ -52,7 +54,7 @@ MonoBehaviour:
   _bulletToDestroy: {fileID: 8926639171759741596}
   _explosion: {fileID: 4475340254605798424, guid: 34d465fbd6655344b9469fc234ae20c6, type: 3}
   _explosionTime: 1.2
-  _bulletRef: {fileID: 0}
+  _bulletRef: {fileID: 4934285455379299069}
 --- !u!50 &1874458096428200815
 Rigidbody2D:
   serializedVersion: 4
@@ -189,6 +191,41 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4934285455379299069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866431742928225564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac397d2338fb34b47a8a89650f20ffb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 3
+  speed: 50
+  damageModifier: 1
+  _maxTimeToDestroy: 5
+  rb2d: {fileID: 1874458096428200815}
+  _anim: {fileID: 3082608667016607994}
+  _aSource: {fileID: 8926639171759741599}
+--- !u!70 &1900001338951751193
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866431742928225564}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.21, y: 0.11}
+  m_Direction: 1
 --- !u!1 &8926639171759741596
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,8 +237,6 @@ GameObject:
   - component: {fileID: 7516694020407385518}
   - component: {fileID: 5987691242814264445}
   - component: {fileID: 8926639171759741599}
-  - component: {fileID: 5679318094405201499}
-  - component: {fileID: 2918755650034571739}
   m_Layer: 3
   m_Name: MiniBlast
   m_TagString: Untagged
@@ -370,38 +405,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!70 &5679318094405201499
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8926639171759741596}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.21, y: 0.11}
-  m_Direction: 1
---- !u!114 &2918755650034571739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8926639171759741596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac397d2338fb34b47a8a89650f20ffb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 3
-  speed: 50
-  damageModifier: 1
-  _maxTimeToDestroy: 5
-  _rb2d: {fileID: 1874458096428200815}
-  _anim: {fileID: 3082608667016607994}
-  _aSource: {fileID: 8926639171759741599}
