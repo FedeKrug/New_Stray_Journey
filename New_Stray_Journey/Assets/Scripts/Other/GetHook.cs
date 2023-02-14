@@ -6,6 +6,14 @@ public class GetHook : MonoBehaviour
 {
 	[SerializeField] private Hook _hookRef;
 	[SerializeField] private Transform _playerPos;
+
+	private void Update()
+	{
+		if (_hookRef.onLimit|| _hookRef.objectGrabbed)
+		{
+			StartCoroutine(BringHookToPlayer());
+		}
+	}
 	public IEnumerator BringHookToPlayer()
 	{
 

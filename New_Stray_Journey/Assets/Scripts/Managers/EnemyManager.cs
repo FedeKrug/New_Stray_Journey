@@ -4,7 +4,18 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-
+	public static EnemyManager instance;
+	private void Awake()
+	{
+		if (instance == null)
+		{
+			instance = this;
+		}
+		else
+		{
+			Destroy(gameObject);
+		}
+	}
 	private void OnEnable()
 	{
 		EventManager.instance.enemyShootingEvent.AddListener(HandleEnemyShooting);

@@ -267,6 +267,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 150
   _enemyRef: {fileID: 3144589767905996894}
+  _enemySpriteRef: {fileID: 7940353606871132009}
+  _normalColor: {r: 0, g: 1, b: 0.7137255, a: 0}
+  _damagedColor: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 0}
 --- !u!58 &7940353607566265869
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -298,6 +301,8 @@ MonoBehaviour:
   idleDamage: 10
   timeToSpecial: 5
   enemyLife: {fileID: 7940353607566265867}
+  inSpecial: 0
+  specialReady: 0
   inAttackRange: 0
   playerDetected: 0
   speed: 5
@@ -306,6 +311,7 @@ MonoBehaviour:
   - {fileID: 7940353608113907988}
   - {fileID: 6453913044813992091}
   bullet: {fileID: 6506511640988793597, guid: 49777fd885517164f9e050b48d5a7392, type: 3}
+  onAnimation: 0
 --- !u!1 &7940353608113907988
 GameObject:
   m_ObjectHideFlags: 0

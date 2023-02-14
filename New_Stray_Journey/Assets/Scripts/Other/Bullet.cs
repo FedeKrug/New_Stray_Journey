@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Game.Player;
+using Game.Enemies;
 
 public class Bullet : MonoBehaviour
 {
@@ -29,5 +31,17 @@ public class Bullet : MonoBehaviour
 	{
 		rb2d.MovePosition(transform.position + transform.up * speed * Time.fixedDeltaTime);
 
+	}
+
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (collision.CompareTag("Player"))
+		{
+			PlayerManager.instance.TakeDamage(damage);
+		}
+		if (collision.CompareTag("Enemy"))
+		{
+			collision.GetComponent<EnemyHealth>().TakeDamage(damage);
+		}
 	}
 }

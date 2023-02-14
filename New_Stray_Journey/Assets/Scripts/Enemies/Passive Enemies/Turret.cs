@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace Game.Enemies
 {
@@ -7,7 +8,7 @@ namespace Game.Enemies
 	{
 		[SerializeField] protected List<GameObject> bulletGens;
 		[SerializeField] protected GameObject bullet;
-
+		[SerializeField] bool onAnimation;
 		private void Update()
 		{
 			timeRate -= Time.deltaTime;
@@ -32,7 +33,8 @@ namespace Game.Enemies
 
 		public override void Death(EnemyHealth enemyHealth)
 		{
-
+			StartCoroutine(Explode());
+			//enemyHealth.gameObject.SetActive(false);
 		}
 
 
@@ -45,13 +47,28 @@ namespace Game.Enemies
 		{
 			EventManager.instance.enemyShootingEvent.Invoke(bulletGens, bullet);
 		}
-		protected override void SpecialAttack()
+		protected override void SpecialAttack() // un ataque potente con mayor rango de ataque y mayor damage
 		{
 
 		}
-		protected void LookAtTarget(Transform target)
+		protected void LookAtTarget(Transform target) // si la torreta tiene poca vida, empezara a buscar al player para apuntarle y atacarlo (raycast2D)
 		{
 
+		}
+
+		IEnumerator Explode()
+		{
+			//anim.Play("DeathAnimation"); //uso anim.Play para que solo se reproduzca una vez la animacion
+			////en la animacion de muerte se activa un bool onAnimation que se desactiva al finalizar la animacion
+
+			//while (onAnimation)
+			//{
+			//	yield return null;
+			//}
+			Debug.Log("Enemy is dead");
+
+			yield return null;
+			gameObject.SetActive(false);
 		}
 	}
 }
