@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace Game.Enemies
 {
@@ -47,7 +48,7 @@ namespace Game.Enemies
 
 		public override void Death(EnemyHealth enemyHealth)
 		{
-			//Explode();
+			StartCoroutine(Explode());
 		}
 
 		protected override void Attack()
@@ -61,9 +62,19 @@ namespace Game.Enemies
 			//Explode();
 		}
 
-		protected virtual void Explode()
+		protected IEnumerator Explode()
 		{
-			//explotar
+			//anim.Play("DeathAnimation"); //uso anim.Play para que solo se reproduzca una vez la animacion
+			////en la animacion de muerte se activa un bool onAnimation que se desactiva al finalizar la animacion
+
+			//while (onAnimation)
+			//{
+			//	yield return null;
+			//}
+			Debug.Log("Enemy is dead");
+
+			yield return null;
+			gameObject.SetActive(false);
 		}
 
 		private void OnTriggerEnter2D(Collider2D collision)

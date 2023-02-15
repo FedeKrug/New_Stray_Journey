@@ -12,10 +12,7 @@ namespace Game.Enemies
 		[SerializeField, Tooltip("Hole Center rb2d")] private Rigidbody2D _rb2d;
 
 
-		private void Update()
-		{
-			//AtractObjects();
-		}
+		
 		private void AtractObjects() // TODO: Use forces & Physics2D to atract the player
 									 // and objects to the center of the hole
 		{
@@ -44,6 +41,10 @@ namespace Game.Enemies
 			_inHoleRadius = true;
 			GetCloseToObjects(collision);
 
+		}
+		private void OnTriggerStay2D(Collider2D collision)
+		{
+			AtractObjects();
 		}
 
 		private void OnTriggerExit2D(Collider2D collision)

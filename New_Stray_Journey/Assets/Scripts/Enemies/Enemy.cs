@@ -14,7 +14,9 @@ namespace Game.Enemies
 		//[SerializeField] protected EnemyRangeDetector rangeOfView;
 		public bool inSpecial, specialReady;
 		public bool inAttackRange, playerDetected;
-		protected Animator anim;
+		[SerializeField] protected Animator anim;
+		[SerializeField] protected AudioSource aSource;
+
 
 		void Awake()
 		{

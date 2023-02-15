@@ -40,7 +40,6 @@ namespace Game.Enemies
 			//_enemySpriteRef.color = Color.red;
 			yield return null;
 			//_enemySpriteRef.color = _normalColor;
-			yield return new WaitForSeconds(2);
 			CheckDeath();
 		}
 	}
