@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2665458473584841222}
   - component: {fileID: 2665458473584841223}
   - component: {fileID: 2665458473584841220}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: RangeOfView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,6 @@ GameObject:
   - component: {fileID: 2665458474099029082}
   - component: {fileID: 2665458474099029078}
   - component: {fileID: 2665458474099029081}
-  - component: {fileID: 2665458474099029080}
   m_Layer: 7
   m_Name: MiniEnemy_Sprite
   m_TagString: Enemy
@@ -166,27 +165,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &2665458474099029080
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2665458474099029085}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &2665458474519567679
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,6 +177,7 @@ GameObject:
   - component: {fileID: 2665458474519567675}
   - component: {fileID: 2665458474519567674}
   - component: {fileID: 2665458474519567677}
+  - component: {fileID: 109341022873252367}
   m_Layer: 7
   m_Name: MiniEnemy Container
   m_TagString: Enemy
@@ -236,6 +215,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 150
   _enemyRef: {fileID: 2665458474519567674}
+  _enemySpriteRef: {fileID: 0}
+  _normalColor: {r: 0, g: 0, b: 0, a: 0}
+  _damagedColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &2665458474519567674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,8 +233,12 @@ MonoBehaviour:
   idleDamage: 5
   timeToSpecial: 3
   enemyLife: {fileID: 2665458474519567675}
+  inSpecial: 0
+  specialReady: 0
   inAttackRange: 0
   playerDetected: 0
+  anim: {fileID: 0}
+  aSource: {fileID: 0}
   movementSpeed: 2
   playerRef: {fileID: 0}
   remainingTime: 1
@@ -275,6 +261,27 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.4
+--- !u!50 &109341022873252367
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2665458474519567679}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!1 &2665458475071404580
 GameObject:
   m_ObjectHideFlags: 0
