@@ -140,7 +140,10 @@ MonoBehaviour:
   objectGrabbed: 0
   onLimit: 0
   onShoot: 0
-  _hookGrabForce: 22
+  _hookGrabForce: 70.5
+  _hookLimitTime: 1.54
+  _hookMaxLimitTime: 1.5
+  _rb2d: {fileID: 1117478314933503323}
 --- !u!50 &1117478314933503323
 Rigidbody2D:
   serializedVersion: 4

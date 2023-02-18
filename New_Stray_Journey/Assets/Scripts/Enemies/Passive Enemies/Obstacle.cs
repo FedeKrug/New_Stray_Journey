@@ -36,7 +36,10 @@ namespace Game.Enemies
 			aSource.PlayOneShot(_explosionSound);
 			yield return null;
 			_spriteR.enabled = false;
-			yield return new WaitForSeconds(1.2f);
+			while (aSource.isPlaying)
+			{
+				yield return null;
+			}
 			_explosion.SetActive(false);
 			this.gameObject.SetActive(false);
 		}

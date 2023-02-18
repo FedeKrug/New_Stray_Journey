@@ -45,7 +45,6 @@ namespace Game.Player
 			GameObject _hook = Instantiate(hook,playerPosOffset, hookOrigin.transform.rotation,playerPos);
 			_hook.transform.position = hookOrigin.transform.position;
 			
-			Debug.Log("Gancho");
 		}
 
 		private void OnDisable()

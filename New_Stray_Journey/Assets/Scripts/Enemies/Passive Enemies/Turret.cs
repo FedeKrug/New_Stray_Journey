@@ -40,7 +40,7 @@ namespace Game.Enemies
 
 		public void Move() //la torreta girara constantemente cuando el player se acerca a ella
 		{
-			this.transform.eulerAngles += Vector3.forward * speed * Time.deltaTime;
+			this.transform.eulerAngles += Vector3.forward * movementSpeed * Time.deltaTime;
 		}
 
 		protected override void Attack()

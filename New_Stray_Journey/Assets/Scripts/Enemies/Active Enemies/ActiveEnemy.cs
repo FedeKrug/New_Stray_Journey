@@ -5,7 +5,7 @@ namespace Game.Enemies
 {
 	public abstract class ActiveEnemy : Enemy
 	{
-		[SerializeField] protected float movementSpeed;
+		
 		[SerializeField] protected Transform playerRef;
 		public abstract void Move(Transform target);
 

@@ -9,6 +9,7 @@ namespace Game.Enemies
 	{
 		[SerializeField, Range(0, 10)] protected float idleDamage;
 		[SerializeField, Range(0, 10)] protected float timeToSpecial;
+		[SerializeField] protected float movementSpeed;
 		protected float idleTime;
 		[SerializeField] protected EnemyHealth enemyLife;
 		//[SerializeField] protected EnemyRangeDetector rangeOfView;

@@ -5,10 +5,13 @@ namespace Game.Enemies
 {
 	public abstract class PassiveEnemy : Enemy
 	{
-		[SerializeField] protected float speed;
 		[SerializeField, Range(0, 5)] protected float remainingTime;
 		protected float timeRate;
 
+		protected virtual void ConstantMove()
+		{
+
+		}
 
 		protected virtual IEnumerator Explode()
 		{

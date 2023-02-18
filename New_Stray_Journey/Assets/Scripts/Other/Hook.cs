@@ -4,19 +4,20 @@ using Game.Player;
 using Game.Enemies;
 
 
-public class Hook : Bullet
+public class Hook : MonoBehaviour //Think about a pull ray & a push ray
 {
 	public bool objectGrabbed;
 	public bool onLimit;
 	public bool onShoot;
 
-	[SerializeField, Range(0, 100)] private float _hookGrabForce;
-
+	[SerializeField, Range(0, 1000)] private float _hookGrabForce;
+	[SerializeField, Range(0, 10)] private float _hookLimitTime, _hookMaxLimitTime;
 
 
 	private void OnEnable()
 	{
 		onShoot = true;
+		onLimit = false;
 	}
 
 	private void OnDisable()
@@ -24,9 +25,33 @@ public class Hook : Bullet
 		onShoot = false;
 		Debug.Log("Hook Disabled");
 	}
+
+
+	private void Update()
+	{
+		_hookLimitTime -= Time.deltaTime;
+		if (_hookLimitTime <=0)
+		{
+			onLimit = true;
+		}
+		if (onLimit && !objectGrabbed)
+		{
+			Destroy(gameObject);
+
+		}
+		else
+		{
+			return;
+		}
+	}
+	private void OnDestroy()
+	{
+		Debug.Log("Hook Destroyed");
+	}
+
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.GetComponent<Interactable>() != null || 
+		if (collision.GetComponent<Interactable>() != null ||
 			collision.GetComponent<Enemy>() != null || collision.GetComponent<Collectable>() != null)
 		{
 			GrabEntity(collision.gameObject);
