@@ -8,6 +8,7 @@ namespace Game.Enemies
 		[SerializeField] private GameObject _explosion;
 		[SerializeField] private AudioClip _explosionSound;
 		[SerializeField] private GameObject _particlesExplosion;
+		[SerializeField] private SpriteRenderer _spriteR;
 		public override void Death(EnemyHealth enemyHealth)
 		{
 			StartCoroutine(Explode());
@@ -21,23 +22,23 @@ namespace Game.Enemies
 		protected override void SpecialAttack()
 		{
 			//Damage with the obstacle destruction
-			
-			if (_particlesExplosion)
-			{
+
+
 			_particlesExplosion.SetActive(true);
 
-			}
+
 		}
 
 		protected override IEnumerator Explode()
 		{
 			_explosion.SetActive(true);
-			this.gameObject.SetActive(false);
+			_particlesExplosion.SetActive(true);
 			aSource.PlayOneShot(_explosionSound);
-			SpecialAttack();
 			yield return null;
+			_spriteR.enabled = false;
 			yield return new WaitForSeconds(1.2f);
 			_explosion.SetActive(false);
+			this.gameObject.SetActive(false);
 		}
 	}
 }

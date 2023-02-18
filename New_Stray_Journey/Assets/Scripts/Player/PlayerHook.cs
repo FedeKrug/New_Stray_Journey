@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using System.Collections;
 
 namespace Game.Player
 {
@@ -10,8 +10,14 @@ namespace Game.Player
 		{
 			if (Input.GetKeyDown(KeyCode.E)&& !_hook.GetComponentInChildren<Hook>().onShoot)
 			{
+				
 				EventManager.instance.playerHookEvent.Invoke(_hookOrigin, _hook);
 			}
+		}
+
+		public IEnumerator MarkHookLimit()
+		{
+			yield return null;
 		}
 	}
 }

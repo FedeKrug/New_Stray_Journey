@@ -40,9 +40,11 @@ namespace Game.Player
 
 		private void HookEventHandler(GameObject hookOrigin, GameObject hook)
 		{
-			//GameObject _hook = Instantiate(hook,hookOrigin.transform.position, hookOrigin.transform.rotation);
-			//_hook.transform.position = hookOrigin.transform.position;
-			hook.SetActive(true);
+			var playerPos = FindObjectOfType<PlayerMovement>().gameObject.transform;
+			var playerPosOffset = new Vector3(hookOrigin.transform.position.x, hookOrigin.transform.position.y + 1.5f, hookOrigin.transform.position.z);
+			GameObject _hook = Instantiate(hook,playerPosOffset, hookOrigin.transform.rotation,playerPos);
+			_hook.transform.position = hookOrigin.transform.position;
+			
 			Debug.Log("Gancho");
 		}
 

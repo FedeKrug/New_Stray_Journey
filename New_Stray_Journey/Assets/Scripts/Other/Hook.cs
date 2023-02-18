@@ -9,7 +9,7 @@ public class Hook : Bullet
 	public bool objectGrabbed;
 	public bool onLimit;
 	public bool onShoot;
-	
+
 	[SerializeField, Range(0, 100)] private float _hookGrabForce;
 
 
@@ -26,41 +26,33 @@ public class Hook : Bullet
 	}
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.GetComponent<Interactable>() != null || collision.GetComponent<ActiveEnemy>() != null ||
-			collision.GetComponent<PassiveEnemy>() != null || collision.GetComponent<Collectable>() != null)
+		if (collision.GetComponent<Interactable>() != null || 
+			collision.GetComponent<Enemy>() != null || collision.GetComponent<Collectable>() != null)
 		{
 			GrabEntity(collision.gameObject);
+
 		}
-		if (collision.CompareTag("Player"))
+		else
 		{
-			Debug.Log("Player Touched wit");
+			//onLimit = true;
+		}
+
+		if (collision.CompareTag("Player") && (onLimit || objectGrabbed))
+		{
+			Debug.Log("Player Touched with Hook");
 			gameObject.SetActive(false);
 		}
 	}
 
-	IEnumerator GetOverHere(GameObject objectToGrab)
-	{
 
-		while (!objectGrabbed || !onLimit)
-		{
-			yield return null;
 
-		}
-		if (objectGrabbed || onLimit)
-		{
-			//StartCoroutine(BringHookToPlayer());
-
-		}
-		Debug.Log($"agarre un nuevo Objeto o personaje");
-	}
-
-	
 
 	public void GrabEntity(GameObject objToGrab)
 	{
-		Debug.Log($"Agarro objeto");
+		var dir = FindObjectOfType<PlayerMovement>().transform.position - objToGrab.transform.position;
+		var dirScale = Vector2.Scale(dir.normalized, gameObject.transform.localScale);
+		objToGrab.gameObject.GetComponent<Rigidbody2D>().AddForce(dirScale * _hookGrabForce, ForceMode2D.Force);
 		objectGrabbed = true;
-		StartCoroutine(GetOverHere(objToGrab));
 	}
 
 
