@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 647748395}
   - component: {fileID: 647748396}
+  - component: {fileID: 5030644811426217008}
   m_Layer: 8
   m_Name: RayCollider
   m_TagString: Untagged
@@ -57,6 +58,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.13, y: 1.26}
   m_EdgeRadius: 0
+--- !u!114 &5030644811426217008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647748394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40eac0dd719ead047ac78ed1e8378220, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onRayRange: 0
 --- !u!1 &5253149180154273166
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,7 +88,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7892728184764546127
 Transform:
   m_ObjectHideFlags: 0
@@ -205,6 +219,7 @@ MonoBehaviour:
   rayDistance: 20
   rayCollider2D: {fileID: 647748396}
   rayWidth: 0.2
+  rayCollider: {fileID: 5030644811426217008}
 --- !u!1 &5989857032423479514
 GameObject:
   m_ObjectHideFlags: 0
@@ -5321,8 +5336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc2272dad21327746a1f911eb0839c4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hookOrigin: {fileID: 8443796295072780440}
-  _hook: {fileID: 6765234085542936731, guid: 211fe70113436a64e9e0eef513d94212, type: 3}
+  _ray: {fileID: 5253149180154273166}
 --- !u!50 &8443796294928771755
 Rigidbody2D:
   serializedVersion: 4
