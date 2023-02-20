@@ -9,7 +9,7 @@ public class DestroyBullet : MonoBehaviour
 	[SerializeField, Range(0.5f, 5)] private float _explosionTime;
 	[SerializeField] private Bullet _bulletRef;
 
-	IEnumerator DestroyBullets()
+	public IEnumerator DestroyBullets()
 	{
 		_bulletRef.speed = 0;
 

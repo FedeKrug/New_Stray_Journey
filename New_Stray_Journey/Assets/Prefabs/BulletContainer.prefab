@@ -208,8 +208,7 @@ MonoBehaviour:
   damageModifier: 1
   _maxTimeToDestroy: 5
   rb2d: {fileID: 1874458096428200815}
-  _anim: {fileID: 3082608667016607994}
-  _aSource: {fileID: 8926639171759741599}
+  _bulletDestruction: {fileID: 2337891325662308979}
 --- !u!70 &1900001338951751193
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

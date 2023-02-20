@@ -136,8 +136,7 @@ MonoBehaviour:
   damageModifier: 1
   _maxTimeToDestroy: 3
   rb2d: {fileID: 6506511640988793568}
-  _anim: {fileID: 6506511640988793599}
-  _aSource: {fileID: 6506511640988793569}
+  _bulletDestruction: {fileID: 6506511640988793570}
 --- !u!114 &6506511640988793570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,13 +167,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.218
+  m_Volume: 0.047
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 61
+  Priority: 75
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

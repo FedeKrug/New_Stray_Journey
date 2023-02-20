@@ -13,8 +13,7 @@ public class Bullet : MonoBehaviour
 	[Header("Destroying Bullets: ")]
 	[SerializeField, Range(0, 15f)] private float _maxTimeToDestroy;
 	[SerializeField] public Rigidbody2D rb2d;
-	[SerializeField] private Animator _anim;
-	[SerializeField] private AudioSource _aSource;
+	[SerializeField] private DestroyBullet _bulletDestruction;
 
 	private void OnEnable()
 	{
@@ -37,10 +36,12 @@ public class Bullet : MonoBehaviour
 	{
 		if (collision.CompareTag("Player"))
 		{
+			StartCoroutine(_bulletDestruction.DestroyBullets());
 			PlayerManager.instance.TakeDamage(damage);
 		}
 		if (collision.CompareTag("Enemy"))
 		{
+			StartCoroutine(_bulletDestruction.DestroyBullets());
 			collision.GetComponent<EnemyHealth>().TakeDamage(damage);
 		}
 	}

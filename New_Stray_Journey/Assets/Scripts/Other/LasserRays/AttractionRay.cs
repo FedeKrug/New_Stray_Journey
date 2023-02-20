@@ -5,7 +5,7 @@ public class AttractionRay : LasserRay
 {
 	[SerializeField, Range (0,20)] private float _rayForce;
 
-	protected override void InteractWithEntities(Collider2D collision)
+	public override void InteractWithEntities(Collider2D collision)
 	{
 		var dir = transform.position - collision.transform.position;
 		var dirScale = Vector2.Scale(dir.normalized, gameObject.transform.localScale);
