@@ -10,22 +10,7 @@ namespace Game.Enemies
 		[SerializeField] private bool _inHoleRadius;
 		[SerializeField] private Transform _holeCenter;
 		[SerializeField, Tooltip("Hole Center rb2d")] private Rigidbody2D _rb2d;
-
-
 		
-		private void AtractObjects() // TODO: Use forces & Physics2D to atract the player
-									 // and objects to the center of the hole
-		{
-			if (_inHoleRadius)
-			{
-				_rb2d.AddForceAtPosition(new Vector2(_holeForce, _holeForce), _holeCenter.position);
-			}
-			else
-			{
-				return;
-			}
-		}
-
 		private void GetCloseToObjects(Collider2D collision)
 		{
 			if (collision.gameObject.GetComponent<Rigidbody2D>()|| collision.gameObject.GetComponentInParent<Rigidbody2D>() || collision.gameObject.GetComponentInChildren<Rigidbody2D>())
@@ -39,12 +24,10 @@ namespace Game.Enemies
 		private void OnTriggerEnter2D(Collider2D collision)
 		{
 			_inHoleRadius = true;
-			//GetCloseToObjects(collision);
 
 		}
 		private void OnTriggerStay2D(Collider2D collision)
 		{
-			//AtractObjects();
 			GetCloseToObjects(collision);
 		}
 
