@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Game.SO;
@@ -8,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
 	public static GameManager instance;
 	[SerializeField] private FloatSO _playerLife;
-	[SerializeField] private IntSO _scoreToSave;
+	[SerializeField] private TextMeshProUGUI _scoreText;
 
 	void Awake()
 	{
@@ -22,19 +20,14 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-
 	private void OnEnable()
 	{
 		
-	
+
 	}
 	private void OnDisable()
 	{
 		
-		
+
 	}
-
-	
-
-	
 }

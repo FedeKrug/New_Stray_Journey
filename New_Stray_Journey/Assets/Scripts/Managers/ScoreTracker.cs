@@ -50,6 +50,11 @@ public class ScoreTracker : MonoBehaviour
 
 	public void UpdateScoreHandler(string scoreText, TextMeshProUGUI scoreUI)
 	{
-
+		_scoreText.text = $"Score: {score.ToString()}";
+	}
+	public void IncreaseScore(int coinScore)
+	{
+		score += coinScore;
+		EventManager.instance.scoreEvent.Invoke(score.ToString(), _scoreText);
 	}
 }

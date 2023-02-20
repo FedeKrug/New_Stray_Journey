@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CoinCollector : MonoBehaviour
 {
-	[SerializeField, Range(0,20)] private float _collectorForce;
+	[SerializeField, Range(0,2000)] private float _collectorForce;
 	private void OnTriggerStay2D(Collider2D collision)
 	{
 		CatchCoins(collision);
