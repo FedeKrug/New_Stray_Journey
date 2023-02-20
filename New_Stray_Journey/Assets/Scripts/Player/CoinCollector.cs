@@ -7,9 +7,9 @@ public class CoinCollector : MonoBehaviour
 	[SerializeField, Range(0,20)] private float _collectorForce;
 	private void OnTriggerStay2D(Collider2D collision)
 	{
-		Collect(collision);
+		CatchCoins(collision);
 	}
-	private void Collect(Collider2D collision)
+	private void CatchCoins(Collider2D collision)
 	{
 		if (collision.GetComponent<Collectable>() != null)
 		{

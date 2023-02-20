@@ -51,7 +51,7 @@ MonoBehaviour:
   _coinScore: 500
   _particleCoinExplosion: {fileID: 784873707870016435}
   _aSource: {fileID: 3285479229773911482}
-  _coinClip: {fileID: 0}
+  _coinClip: {fileID: 8300000, guid: 76984d3049514f64aadc748ce399c83d, type: 3}
   _spriteR: {fileID: 6144405493502111236}
   _rb2d: {fileID: -8810146826995903896}
 --- !u!212 &6144405493502111236

@@ -39,6 +39,6 @@ public abstract class LasserRay : MonoBehaviour
 
 	}
 
-	protected abstract void InteractWithEntities();
+	protected abstract void InteractWithEntities(Collider2D collision);
 
 }

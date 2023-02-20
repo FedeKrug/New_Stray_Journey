@@ -5,21 +5,56 @@ namespace Game.Player
 {
 	public class PlayerRayShooting : MonoBehaviour
 	{
-		[SerializeField] private GameObject _ray;
+		[SerializeField] private GameObject[] _ray = new GameObject[2];
+		[SerializeField] private KeyCode _attractRayButton, _repulsionRayButton;
+
+
 		private void Update()
 		{
-			if (Input.GetKey(KeyCode.E))
-			{
-				_ray.SetActive(true);
-			}
-			else 
-			{
-				_ray.SetActive(false);
+			//if (Input.GetKey(KeyCode.E))
+			//{
+			//	_ray.SetActive(true);
+			//}
+			//else 
+			//{
+			//	DeactiveRay();
 
+			//}
+
+			if (Input.GetKey(_attractRayButton))
+			{
+				_ray[0].SetActive(true);
+			}
+
+			if (Input.GetKeyUp(_attractRayButton))
+			{
+				_ray[0].SetActive(false);
+			}
+
+			if (Input.GetKey(_repulsionRayButton))
+			{
+				_ray[1].SetActive(true);
+			}
+
+
+			if (Input.GetKeyUp(_repulsionRayButton))
+			{
+				_ray[1].SetActive(false);
 			}
 		}
 
-		
+		//private void ChangeRay()
+		//{
+		//	DeactiveRay();
+		//}
+
+		//private void DeactiveRay()
+		//{
+		//	for (int i = 0; i < _ray.Length; i++)
+		//	{
+		//		_ray[i].SetActive(false);
+		//	}
+		//}
 	}
 }
 

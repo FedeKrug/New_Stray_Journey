@@ -53,19 +53,3 @@ public class ScoreTracker : MonoBehaviour
 
 	}
 }
-
-
-public interface Collectable
-{
-	public void Collect();
-}
-
-public interface Interactable
-{
-	public void Interact();
-}
-
-public interface Destroyable
-{
-	public void Destroy();
-}
