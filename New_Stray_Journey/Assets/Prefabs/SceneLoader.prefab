@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6966290714219996640}
   - component: {fileID: 568924639}
   m_Layer: 0
-  m_Name: SceneManager
+  m_Name: SceneLoader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,3 +56,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67c04645d28f9e45a6282c3e0fc78ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pauseImage: {fileID: 0}

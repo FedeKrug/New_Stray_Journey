@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-
+using Game.Player;
 using UnityEngine;
 
 public class Coin : MonoBehaviour, Collectable
@@ -22,16 +22,24 @@ public class Coin : MonoBehaviour, Collectable
 	IEnumerator CoinExplosion()
 	{
 		_aSource.PlayOneShot(_coinClip);
-		_collected = true;
 		_spriteR.enabled = false;
 		_particleCoinExplosion.gameObject.SetActive(true);
-		while ((_aSource.isPlaying && _collected)|| (_particleCoinExplosion.isPlaying && _collected))
+		yield return null;
+		this.GetComponent<Collider2D>().enabled = false;
+		while (_aSource.isPlaying)
 		{
-			yield return null;
+		yield return null;
 
 		}
+		
 		gameObject.SetActive(false);
 
 	}
-
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (collision.GetComponent<PlayerInteraction>())
+		{
+			_collected = true;
+		}
+	}
 }
