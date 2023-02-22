@@ -12,6 +12,14 @@ namespace Game.Enemies
 			{
 				collision.GetComponent<Enemy>().Death(collision.GetComponent<EnemyHealth>());
 			}
+			if (collision.GetComponent<Rigidbody2D>() && !collision.GetComponent<Enemy>()&&!collision.CompareTag("Player"))
+			{
+				collision.gameObject.SetActive(false);
+			}
+			else if (collision.CompareTag("Player"))
+			{
+				PlayerManager.instance.gameObject.GetComponent<PlayerDeath>().Die();
+			}
 		}
 	}
 }

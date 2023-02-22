@@ -56,10 +56,11 @@ namespace Game.Enemies
 			EventManager.instance.enemyShootingEvent.Invoke(bulletGens, bullet);
 		}
 
-		protected override void SpecialAttack()
+		public override void SpecialAttack()
 		{
 			//Special Attack - un ataque kamikaze.
 			//Explode();
+			Debug.Log("Mini Enemy Kamikaze attack");
 		}
 
 		protected IEnumerator Explode()

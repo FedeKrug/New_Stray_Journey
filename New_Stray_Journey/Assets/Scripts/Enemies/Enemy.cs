@@ -26,7 +26,7 @@ namespace Game.Enemies
 
 		public abstract void Death(EnemyHealth enemyHealth);
 		protected abstract void Attack();
-		protected abstract void SpecialAttack();
+		public abstract void SpecialAttack();
 
 
 		public void StaticDamage()
@@ -40,22 +40,10 @@ namespace Game.Enemies
 			specialReady = true;
 			yield return null;
 			SpecialAttack();
+			yield return null;
+			specialReady = false;
+
 		}
 
 	}
-
-	#region Interfaces
-	public interface IDamagable
-	{
-		public void TakeDamage();
-		public void Death();
-	}
-
-	public interface IAttacks
-	{
-		public abstract void Attack();
-		public abstract void SpecialAttack();
-	}
-	#endregion
-
 }

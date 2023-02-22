@@ -47,7 +47,7 @@ namespace Game.Enemies
 		{
 			EventManager.instance.enemyShootingEvent.Invoke(bulletGens, bullet);
 		}
-		protected override void SpecialAttack() // un ataque potente con mayor rango de ataque y mayor damage
+		public override void SpecialAttack() // un ataque potente con mayor rango de ataque y mayor damage
 		{
 
 		}

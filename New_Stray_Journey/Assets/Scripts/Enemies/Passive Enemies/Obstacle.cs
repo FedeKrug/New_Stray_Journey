@@ -19,7 +19,7 @@ namespace Game.Enemies
 			StaticDamage();
 		}
 
-		protected override void SpecialAttack()
+		public override void SpecialAttack()
 		{
 			//Damage with the obstacle destruction
 
@@ -40,7 +40,6 @@ namespace Game.Enemies
 			{
 				yield return null;
 			}
-			_explosion.SetActive(false);
 			this.gameObject.SetActive(false);
 		}
 	}

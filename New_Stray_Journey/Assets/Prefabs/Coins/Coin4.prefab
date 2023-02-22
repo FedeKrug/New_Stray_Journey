@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 321181327038095134}
   - component: {fileID: -7156553754494208287}
   - component: {fileID: 3928497810499703545}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Coin4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,6 +293,10 @@ PrefabInstance:
     - target: {fileID: 1805540943009094646, guid: a46437b3c617fd64f91d67dbd07ca34e, type: 3}
       propertyPath: m_Name
       value: CoinsExplosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 1805540943009094646, guid: a46437b3c617fd64f91d67dbd07ca34e, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1805540943009094646, guid: a46437b3c617fd64f91d67dbd07ca34e, type: 3}
       propertyPath: m_IsActive

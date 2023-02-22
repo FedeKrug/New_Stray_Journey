@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 
@@ -8,9 +9,7 @@ namespace Game.Enemies
 	public class EnemyRangeDetector : MonoBehaviour
 	{
 		[SerializeField] private Enemy _colliderDetector;
-		[SerializeField, Range(0, 10)] protected float timeToSpecial;
-		protected float idleTime;
-
+		[SerializeField, Range(0, 20)] private float _timeToStopChasing, _timeToStopSpecial;
 
 
 		private void OnTriggerEnter2D(Collider2D collision)
@@ -26,15 +25,45 @@ namespace Game.Enemies
 			if (collision.CompareTag("Player"))
 			{
 				_colliderDetector.inAttackRange = false;
+				StartCoroutine(StopChasing());
+
 			}
+			//if (collision.CompareTag("Player"))
+			//{
+			//	_colliderDetector.specialReady = false;
+
+			//	//timeToSpecial = _idleTime;
+			//}
+		}
+		private void OnTriggerStay2D(Collider2D collision)
+		{
 			if (collision.CompareTag("Player"))
 			{
+				StartCoroutine(_colliderDetector.ChargingSpecial());
 
-				timeToSpecial = idleTime;
-				Debug.Log($"timeToSpecial :{timeToSpecial}, idleTime: {idleTime}");
 			}
 		}
 
+		IEnumerator StopChasing()
+		{
+			yield return new WaitForSeconds(_timeToStopChasing);
+			_colliderDetector.playerDetected = false;
+		}
+		IEnumerator StopSpecial()
+		{
+			yield return new WaitForSeconds(_timeToStopSpecial);
+			if (!_colliderDetector.inSpecial)
+			{
+				_colliderDetector.specialReady = false;
+
+			}
+			else
+			{
+				yield return new WaitUntil(() => _colliderDetector.inSpecial == false);
+				_colliderDetector.specialReady = false;
+			}
+
+		}
 	}
 
 }
