@@ -33,6 +33,7 @@ namespace Game.Enemies
 		{
 			_explosion.SetActive(true);
 			_particlesExplosion.SetActive(true);
+			this.GetComponent<Collider2D>().enabled = false;
 			aSource.PlayOneShot(_explosionSound);
 			yield return null;
 			_spriteR.enabled = false;
