@@ -7,26 +7,23 @@ public class Bullet : MonoBehaviour
 {
 	public float damage;
 	[Range(-250, 250f)] public float speed;
-	[SerializeField, Tooltip("Change damage " +
-	"with a boost later"), Range(0, 25f)]
-	private float damageModifier;
 	[Header("Destroying Bullets: ")]
-	[SerializeField, Range(0, 15f)] private float _maxTimeToDestroy;
+	[SerializeField, Range(0, 15f)] protected float _maxTimeToDestroy;
 	[SerializeField] public Rigidbody2D rb2d;
 	[SerializeField] private DestroyBullet _bulletDestruction;
 
-	private void OnEnable()
+	protected virtual void OnEnable()
 	{
 		rb2d.velocity = Vector2.up * speed;
 	}
 
-	private void Update()
+	protected virtual void Update()
 	{
 
 		Destroy(gameObject, _maxTimeToDestroy);
 	}
 
-	private void FixedUpdate()
+	protected virtual void FixedUpdate()
 	{
 		rb2d.MovePosition(transform.position + transform.up * speed * Time.fixedDeltaTime);
 

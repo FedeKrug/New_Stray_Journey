@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Game.SO;
 using System;
+using Game.Enemies;
 
 namespace Game.Player
 {
@@ -11,7 +12,7 @@ namespace Game.Player
 		public static PlayerManager instance;
 		[SerializeField] private FloatSO _playerHealth;
 		[SerializeField] private PlayerDeath _playerDeathRef;
-		
+
 		#region Singleton and Awake
 		private void Awake()
 		{
@@ -42,9 +43,9 @@ namespace Game.Player
 		{
 			var playerPos = FindObjectOfType<PlayerMovement>().gameObject.transform;
 			var playerPosOffset = new Vector3(hookOrigin.transform.position.x, hookOrigin.transform.position.y + 1.5f, hookOrigin.transform.position.z);
-			GameObject _hook = Instantiate(hook,playerPosOffset, hookOrigin.transform.rotation,playerPos);
+			GameObject _hook = Instantiate(hook, playerPosOffset, hookOrigin.transform.rotation, playerPos);
 			_hook.transform.position = hookOrigin.transform.position;
-			
+
 		}
 
 		private void OnDisable()
@@ -79,18 +80,18 @@ namespace Game.Player
 				}
 			}
 		}
-		
+
 		public void TakeDamage(float damage)
 		{
 			_playerHealth.value -= damage;
 			Debug.Log("Player Damaged");
 			CheckDeath();
-		} 
+		}
 
 		public void IncreaseHealth(float healthBooster)
 		{
 			_playerHealth.value += healthBooster;
-		} 
+		}
 
 		public void CheckDeath()
 		{
@@ -107,4 +108,66 @@ namespace Game.Player
 		}
 	}
 
+	public enum TypeOfSpecialAttack //usar en la clase que se hara para que el player dispare su specialAttack.
+	{
+		Dispersion,
+		Explosion,
+		PowerRay,
+	}
+
+	public abstract class PlayerSpecialPower : Bullet
+	{
+		[SerializeField] private Animator _anim;
+		[SerializeField] string _explosionAnimation;
+
+		protected abstract void Shot();
+		
+		private void OnTriggerEnter2D(Collider2D collision)
+		{
+			if (collision.GetComponent<Enemy>() )
+			{
+				_anim.Play(_explosionAnimation); // TODO: The zone damage will be done into the animation.
+			}
+			else if (collision.GetComponent<Enemy>())
+			{
+
+			}
+		}
+
+	}
+
+	public class BulletExplosionDamage : MonoBehaviour
+	{
+		[SerializeField, Range(0,1500)] private float _damage;
+		private void OnTriggerEnter2D(Collider2D collision)
+		{
+			if (collision.GetComponent<Enemy>())
+			{
+				collision.GetComponent<EnemyHealth>().TakeDamage(_damage);
+			}
+		}
+	}
+
+	public class ExplosionSpecialAttack : PlayerSpecialPower
+	{
+		protected override void Shot()
+		{
+			throw new NotImplementedException();
+		}
+	}
+
+	public class DispersionSpecialAttack : PlayerSpecialPower
+	{
+		protected override void Shot()
+		{
+			throw new NotImplementedException();
+		}
+	}
+	public class PowerRaySpecialAttack : PlayerSpecialPower
+	{
+		protected override void Shot()
+		{
+			throw new NotImplementedException();
+		}
+	}
 }

@@ -8,7 +8,7 @@ public abstract class LasserRay : MonoBehaviour
 	[SerializeField] protected Transform lasserTransform;
 	[SerializeField, Range(0, 100)] protected float rayDistance;
 	[SerializeField] protected BoxCollider2D rayCollider2D;
-	[SerializeField] protected float rayWidth;
+	[SerializeField, Range(0,5)] protected float rayWidth;
 	[SerializeField] protected RayCollider rayCollider;
 
 	private void Update()

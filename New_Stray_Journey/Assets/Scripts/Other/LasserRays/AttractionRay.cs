@@ -3,7 +3,7 @@
 
 public class AttractionRay : LasserRay
 {
-	[SerializeField, Range (0,20)] private float _rayForce;
+	[SerializeField, Range (0,200)] private float _rayForce;
 
 	public override void InteractWithEntities(Collider2D collision)
 	{

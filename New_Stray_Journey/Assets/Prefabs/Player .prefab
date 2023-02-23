@@ -83,7 +83,7 @@ GameObject:
   - component: {fileID: 894957220}
   - component: {fileID: 894957222}
   - component: {fileID: 894957221}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: PlayerTrigger
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -279,7 +279,7 @@ MonoBehaviour:
   lasserTransform: {fileID: 4008573379440581844}
   rayDistance: 20
   rayCollider2D: {fileID: 5086767902319703229}
-  rayWidth: 0.2
+  rayWidth: 0.8
   rayCollider: {fileID: 584971367402965886}
   _rayForce: -50
 --- !u!1 &2386948146886331965
@@ -365,7 +365,7 @@ GameObject:
   - component: {fileID: 4057179948274619407}
   - component: {fileID: 2660198581863914753}
   - component: {fileID: 7991698895153440756}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: PlayerCoinCollector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,7 +427,7 @@ GameObject:
   - component: {fileID: 7156777960077073889}
   - component: {fileID: 3100784493771100115}
   m_Layer: 8
-  m_Name: PlayerLaser
+  m_Name: PlayerAttractionRay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -562,9 +562,9 @@ MonoBehaviour:
   lasserTransform: {fileID: 7892728184764546127}
   rayDistance: 20
   rayCollider2D: {fileID: 647748396}
-  rayWidth: 0.2
+  rayWidth: 0.8
   rayCollider: {fileID: 5030644811426217008}
-  _rayForce: 19.33
+  _rayForce: 50
 --- !u!1 &5989857032423479514
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,7 +575,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8558811131444952573}
   - component: {fileID: 5038082395679122643}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: PlayerCollisions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
