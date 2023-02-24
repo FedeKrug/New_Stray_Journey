@@ -40,10 +40,11 @@ public class EventManager : MonoBehaviour
 	public SaveScoreEvent saveScoreEvent = new SaveScoreEvent();
 
 	public UIEvent healthBarEvent = new UIEvent();
+	public UIEvent specialUIEvent = new UIEvent();
 }
 
 public class ShootEvent : UnityEvent<List<GameObject>, GameObject> { } //1- de donde sale el disparo 2- cual es el disparo
-public class HealthEvent : UnityEvent<float> { } //la vida que se le da o quita al personaje
+public class HealthEvent : UnityEvent<float> { } 
 public class ScoreEvent : UnityEvent<string, TextMeshProUGUI> { }
 public class HookEvent : UnityEvent<GameObject, GameObject> { }
 

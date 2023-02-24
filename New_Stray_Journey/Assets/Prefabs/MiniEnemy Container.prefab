@@ -153,7 +153,7 @@ Animator:
   m_GameObject: {fileID: 2665458474099029085}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: da15f4243a64944488ffad233d475e3a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -268,8 +268,7 @@ MonoBehaviour:
   _health: 150
   _enemyRef: {fileID: 2665458474519567674}
   _enemySpriteRef: {fileID: 2665458474099029081}
-  _normalColor: {r: 1, g: 1, b: 1, a: 0}
-  _hurtColor: {r: 1, g: 0, b: 0, a: 0}
+  _hurtAnimation: MiniEnemyDamaged
 --- !u!114 &2665458474519567674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,6 +283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idleDamage: 5
   timeToSpecial: 3
+  timeOfSpecial: 0
   movementSpeed: 2
   enemyLife: {fileID: 2665458474519567675}
   inSpecial: 0
@@ -292,11 +292,16 @@ MonoBehaviour:
   playerDetected: 0
   anim: {fileID: 2665458474099029078}
   aSource: {fileID: 8026118009220390439}
+  droppingObjects: []
   playerRef: {fileID: 0}
   remainingTime: 1
   bulletGens:
   - {fileID: 2665458475071404580}
   bullet: {fileID: 6506511640988793597, guid: 49777fd885517164f9e050b48d5a7392, type: 3}
+  _deathAnim: 
+  _deathTime: 1
+  _distance: 10
+  _rb2d: {fileID: 109341022873252367}
 --- !u!58 &2665458474519567677
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -327,7 +332,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0
+  m_AngularDrag: 10.72
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0

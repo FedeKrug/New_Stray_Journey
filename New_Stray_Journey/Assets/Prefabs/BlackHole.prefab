@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c5d11880055d7459b76d9c80199359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _centerHoleDamage: 50
 --- !u!1 &694105199863790698
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,6 +265,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idleDamage: 0
   timeToSpecial: 0
+  timeOfSpecial: 0
+  movementSpeed: 0
   enemyLife: {fileID: 0}
   inSpecial: 0
   specialReady: 0
@@ -271,10 +274,11 @@ MonoBehaviour:
   playerDetected: 0
   anim: {fileID: 0}
   aSource: {fileID: 0}
-  speed: 0
   remainingTime: 0
   _explosion: {fileID: 0}
   _explosionSound: {fileID: 0}
+  _particlesExplosion: {fileID: 0}
+  _spriteR: {fileID: 0}
   _holeForce: 25
   _inHoleRadius: 0
   _holeCenter: {fileID: 694105199472234106}

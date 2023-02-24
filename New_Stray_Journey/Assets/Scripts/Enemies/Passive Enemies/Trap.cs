@@ -4,7 +4,7 @@ namespace Game.Enemies
 {
 	public abstract class Trap : Obstacle
 	{
-		protected override void ConstantMove()
+		protected override void ConstantMove() //move around waypoints
 		{
 			base.ConstantMove();
 		}

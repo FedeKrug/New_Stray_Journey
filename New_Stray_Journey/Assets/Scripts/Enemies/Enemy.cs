@@ -16,7 +16,7 @@ namespace Game.Enemies
 		public bool inAttackRange, playerDetected;
 		[SerializeField] protected Animator anim;
 		[SerializeField] protected AudioSource aSource;
-
+		[SerializeField] protected List<GameObject> droppingObjects;
 
 		void Awake()
 		{

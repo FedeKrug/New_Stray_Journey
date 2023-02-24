@@ -5722,8 +5722,8 @@ GameObject:
   - component: {fileID: 8443796294928771749}
   - component: {fileID: 8443796294928771748}
   - component: {fileID: 8443796294928771751}
-  - component: {fileID: 8443796294928771755}
   - component: {fileID: 8443796294928771750}
+  - component: {fileID: 8443796294928771755}
   - component: {fileID: 8443796294928771744}
   m_Layer: 8
   m_Name: 'Player '
@@ -5791,6 +5791,24 @@ MonoBehaviour:
   - {fileID: 29061162093685428}
   _attractRayButton: 101
   _repulsionRayButton: 113
+--- !u!114 &8443796294928771750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8443796294928771754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8893e30694d189d4a82d23fcc25d5d54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletGens:
+  - {fileID: 8443796295503721819}
+  - {fileID: 8443796294524883328}
+  _bullet: {fileID: 866431742928225564, guid: 1d4d5be9b44eb6e4ba7744522269bef7, type: 3}
+  _maxTimeRate: 0.15
+  _shootType: 0
 --- !u!50 &8443796294928771755
 Rigidbody2D:
   serializedVersion: 4
@@ -5812,24 +5830,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &8443796294928771750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8443796294928771754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8893e30694d189d4a82d23fcc25d5d54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bulletGens:
-  - {fileID: 8443796295503721819}
-  - {fileID: 8443796294524883328}
-  _bullet: {fileID: 866431742928225564, guid: 1d4d5be9b44eb6e4ba7744522269bef7, type: 3}
-  _maxTimeRate: 0.15
-  _shootType: 0
 --- !u!58 &8443796294928771744
 CircleCollider2D:
   m_ObjectHideFlags: 0

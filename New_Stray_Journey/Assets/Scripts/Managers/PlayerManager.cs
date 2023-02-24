@@ -73,11 +73,7 @@ namespace Game.Player
 					Debug.Log("Disparo");
 
 				}
-				else
-				{
-					Debug.Log("Out of bullets");
-
-				}
+				
 			}
 		}
 
@@ -108,30 +104,20 @@ namespace Game.Player
 		}
 	}
 
-	public enum TypeOfSpecialAttack //usar en la clase que se hara para que el player dispare su specialAttack.
+	public abstract class PlayerSpecialShoot : Bullet
 	{
-		Dispersion,
-		Explosion,
-		PowerRay,
-	}
-
-	public abstract class PlayerSpecialPower : Bullet
-	{
-		[SerializeField] private Animator _anim;
-		[SerializeField] string _explosionAnimation;
-
-		protected abstract void Shot();
+		[SerializeField] protected Animator anim;
+		[SerializeField] protected string explosionAnimation;
+		[SerializeField] public int id;
+		public abstract void Shot();
 		
-		private void OnTriggerEnter2D(Collider2D collision)
+		protected virtual void OnTriggerEnter2D(Collider2D collision)
 		{
 			if (collision.GetComponent<Enemy>() )
 			{
-				_anim.Play(_explosionAnimation); // TODO: The zone damage will be done into the animation.
+				anim.Play(explosionAnimation); // TODO: The zone damage will be done into the animation.
 			}
-			else if (collision.GetComponent<Enemy>())
-			{
-
-			}
+			
 		}
 
 	}
@@ -148,24 +134,24 @@ namespace Game.Player
 		}
 	}
 
-	public class ExplosionSpecialAttack : PlayerSpecialPower
+	public class ExplosionSpecialAttack : PlayerSpecialShoot
 	{
-		protected override void Shot()
+		public override void Shot()
 		{
 			throw new NotImplementedException();
 		}
 	}
 
-	public class DispersionSpecialAttack : PlayerSpecialPower
+	public class DispersionSpecialAttack : PlayerSpecialShoot
 	{
-		protected override void Shot()
+		public override void Shot()
 		{
-			throw new NotImplementedException();
+
 		}
 	}
-	public class PowerRaySpecialAttack : PlayerSpecialPower
+	public class PowerRaySpecialAttack : PlayerSpecialShoot
 	{
-		protected override void Shot()
+		public override void Shot()
 		{
 			throw new NotImplementedException();
 		}

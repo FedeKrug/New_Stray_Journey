@@ -8,18 +8,8 @@ namespace Game.Player
 		[SerializeField] private GameObject[] _ray = new GameObject[2];
 		[SerializeField] private KeyCode _attractRayButton, _repulsionRayButton;
 
-
 		private void Update()
 		{
-			//if (Input.GetKey(KeyCode.E))
-			//{
-			//	_ray.SetActive(true);
-			//}
-			//else 
-			//{
-			//	DeactiveRay();
-
-			//}
 
 			if (Input.GetKey(_attractRayButton))
 			{
@@ -43,18 +33,6 @@ namespace Game.Player
 			}
 		}
 
-		//private void ChangeRay()
-		//{
-		//	DeactiveRay();
-		//}
-
-		//private void DeactiveRay()
-		//{
-		//	for (int i = 0; i < _ray.Length; i++)
-		//	{
-		//		_ray[i].SetActive(false);
-		//	}
-		//}
 	}
 }
 

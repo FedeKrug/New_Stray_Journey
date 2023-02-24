@@ -29,12 +29,7 @@ namespace Game.Enemies
 				StartCoroutine(StopSpecial());
 
 			}
-			//if (collision.CompareTag("Player"))
-			//{
-			//	_colliderDetector.specialReady = false;
-
-			//	//timeToSpecial = _idleTime;
-			//}
+		
 		}
 		private void OnTriggerStay2D(Collider2D collision)
 		{

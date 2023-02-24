@@ -71,17 +71,7 @@ namespace Game.Enemies
 			movementSpeed = _specialSpeed;
 			remainingTime = _specialFireRate;
 			Attack();
-			//yield return new WaitForSeconds(_timeToChangeDirection);
-			//_changedDirection = !_changedDirection;
-			////if (_changedDirection)
-			////{
-			////	_specialSpeed *= -1;
-			////}
-			////else
-			////{
-			////	_specialSpeed /= -1;
-			////}
-			////_specialSpeed *= -1;
+			
 			yield return null;
 
 		}

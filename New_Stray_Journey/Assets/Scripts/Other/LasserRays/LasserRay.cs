@@ -14,15 +14,6 @@ public abstract class LasserRay : MonoBehaviour
 	private void Update()
 	{
 		CreateLasserRay();
-		if (rayCollider.onRayRange)
-		{
-			Debug.Log("Ray has choked with an object");
-			
-		}
-		else
-		{
-			
-		}
 	}
 
 	protected void CreateLasserRay()

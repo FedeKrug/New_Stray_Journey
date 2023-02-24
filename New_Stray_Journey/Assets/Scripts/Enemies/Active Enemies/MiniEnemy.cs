@@ -10,7 +10,10 @@ namespace Game.Enemies
 		protected float timeRate;
 		[SerializeField] protected List<GameObject> bulletGens;
 		[SerializeField] protected GameObject bullet;
-
+		[SerializeField] private string _deathAnim;
+		[SerializeField] private float _deathTime;
+		[SerializeField] private float _distance;
+		[SerializeField] private Rigidbody2D _rb2d;
 		private void Update()
 		{
 			timeRate -= Time.deltaTime;
@@ -58,25 +61,25 @@ namespace Game.Enemies
 
 		public override void SpecialAttack()
 		{
-			//Special Attack - un ataque kamikaze.
-			//Explode();
-			Debug.Log("Mini Enemy Kamikaze attack");
+			Debug.Log("Kamikaze Attack");		
 		}
 
 		protected IEnumerator Explode()
 		{
-			//anim.Play("DeathAnimation"); //uso anim.Play para que solo se reproduzca una vez la animacion
-			////en la animacion de muerte se activa un bool onAnimation que se desactiva al finalizar la animacion
-
-			//while (onAnimation)
-			//{
-			//	yield return null;
-			//}
 			Debug.Log("Enemy is dead");
-
+			Dropping(droppingObjects);
 			yield return null;
 			gameObject.SetActive(false);
 		}
+
+		IEnumerator ExplodeWithAnimation()
+		{
+			anim.Play(_deathAnim);
+			yield return new WaitForSeconds(_deathTime);
+			Debug.Log("Mini Enemy Exploded with animations");
+			StartCoroutine(Explode());
+		}
+
 
 		private void OnTriggerEnter2D(Collider2D collision)
 		{

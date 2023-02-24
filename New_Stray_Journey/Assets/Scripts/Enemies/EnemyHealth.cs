@@ -17,7 +17,6 @@ namespace Game.Enemies
 		{
 			if (_health <= 0)
 			{
-				//Death
 				_enemyRef.Death(this);
 			}
 		}

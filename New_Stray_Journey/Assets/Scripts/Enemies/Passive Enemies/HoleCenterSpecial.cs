@@ -6,6 +6,7 @@ namespace Game.Enemies
 {
 	public class HoleCenterSpecial: MonoBehaviour
 	{
+		[SerializeField] private float _centerHoleDamage;
 		private void OnTriggerEnter2D(Collider2D collision)
 		{
 			if (collision.GetComponent<Enemy>())
@@ -16,9 +17,14 @@ namespace Game.Enemies
 			{
 				collision.gameObject.SetActive(false);
 			}
-			else if (collision.CompareTag("Player"))
+			
+		}
+
+		private void OnTriggerStay2D(Collider2D collision)
+		{
+			if (collision.CompareTag("Player"))
 			{
-				PlayerManager.instance.gameObject.GetComponent<PlayerDeath>().Die();
+				PlayerManager.instance.TakeDamage(_centerHoleDamage);
 			}
 		}
 	}
