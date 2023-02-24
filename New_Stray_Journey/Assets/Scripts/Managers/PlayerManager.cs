@@ -104,36 +104,6 @@ namespace Game.Player
 		}
 	}
 
-	public abstract class PlayerSpecialShoot : Bullet
-	{
-		[SerializeField] protected Animator anim;
-		[SerializeField] protected string explosionAnimation;
-		[SerializeField] public int id;
-		public abstract void Shot();
-		
-		protected virtual void OnTriggerEnter2D(Collider2D collision)
-		{
-			if (collision.GetComponent<Enemy>() )
-			{
-				anim.Play(explosionAnimation); // TODO: The zone damage will be done into the animation.
-			}
-			
-		}
-
-	}
-
-	public class BulletExplosionDamage : MonoBehaviour
-	{
-		[SerializeField, Range(0,1500)] private float _damage;
-		private void OnTriggerEnter2D(Collider2D collision)
-		{
-			if (collision.GetComponent<Enemy>())
-			{
-				collision.GetComponent<EnemyHealth>().TakeDamage(_damage);
-			}
-		}
-	}
-
 	public class ExplosionSpecialAttack : PlayerSpecialShoot
 	{
 		public override void Shot()

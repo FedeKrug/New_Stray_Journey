@@ -12,6 +12,7 @@ namespace Game.Enemies
 			{
 				enemyCant++;
 				_totalEnemies.value++;
+				EventManager.instance.enemyCounterUIEvent.Invoke();
 			}
 		}
 	}

@@ -3,17 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Game.SO;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
+	[Header ("HealthBar")]
     [SerializeField] private Image _healthBar;
     [SerializeField] private FloatSO _playerHealth;
 
+
+	[Header ("SpecialAttacks")]
 	[SerializeField] private List<Image> _specialAttacks;
 	[SerializeField] private float _timeToSpecial;
 	[SerializeField] private float _maxTime;
+
+	[Header("EnemyCounter")]
+	[SerializeField] private IntSO _enemyCantRef;
+	[SerializeField] private TextMeshProUGUI _enemyCounterText;
     void Awake()
     {
         if (instance == null)
@@ -35,6 +43,7 @@ public class UIManager : MonoBehaviour
 	{
 		EventManager.instance.healthBarEvent.AddListener(UpdateHealthBarHandler);
 		EventManager.instance.specialUIEvent.AddListener(SpecialAttackUIHandler);
+		EventManager.instance.enemyCounterUIEvent.AddListener(EnemyCounterUIHandler);
 
 	}
 
@@ -42,6 +51,7 @@ public class UIManager : MonoBehaviour
 	{
 		EventManager.instance.healthBarEvent.RemoveListener(UpdateHealthBarHandler);
 		EventManager.instance.specialUIEvent.RemoveListener(SpecialAttackUIHandler);
+		EventManager.instance.enemyCounterUIEvent.RemoveListener(EnemyCounterUIHandler);
 	}
 	public void UpdateHealthBarHandler()
 	{
@@ -65,5 +75,10 @@ public class UIManager : MonoBehaviour
 		}
 
 		currentSpecial.fillAmount = 0;
+	}
+
+	public void EnemyCounterUIHandler()
+	{
+		_enemyCounterText.text = $"Enemies: { _enemyCantRef.value.ToString()}";
 	}
 }

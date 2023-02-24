@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 
@@ -12,6 +13,11 @@ namespace Game.Enemies
 		[SerializeField] private Enemy _enemyRef;
 		[SerializeField] private SpriteRenderer _enemySpriteRef;
 		[SerializeField] private string _hurtAnimation;
+
+		public float Health
+		{
+			get => _health; set => _health = value;
+		}
 
 		public void CheckDeath()
 		{
@@ -30,7 +36,7 @@ namespace Game.Enemies
 		{
 			_health -= damage;
 			StartCoroutine(DamageFeedback());
-			
+
 		}
 
 		IEnumerator DamageFeedback()
@@ -38,7 +44,7 @@ namespace Game.Enemies
 			var enemyAnim = _enemySpriteRef.GetComponent<Animator>();
 			if (enemyAnim)
 			{
-			enemyAnim.Play(_hurtAnimation);
+				enemyAnim.Play(_hurtAnimation);
 
 			}
 			yield return null;

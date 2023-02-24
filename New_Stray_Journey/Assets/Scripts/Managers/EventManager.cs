@@ -41,6 +41,7 @@ public class EventManager : MonoBehaviour
 
 	public UIEvent healthBarEvent = new UIEvent();
 	public UIEvent specialUIEvent = new UIEvent();
+	public UIEvent enemyCounterUIEvent = new UIEvent();
 }
 
 public class ShootEvent : UnityEvent<List<GameObject>, GameObject> { } //1- de donde sale el disparo 2- cual es el disparo
