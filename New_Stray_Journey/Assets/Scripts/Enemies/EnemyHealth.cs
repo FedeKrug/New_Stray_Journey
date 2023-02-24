@@ -11,9 +11,8 @@ namespace Game.Enemies
 		[SerializeField] private float _health;
 		[SerializeField] private Enemy _enemyRef;
 		[SerializeField] private SpriteRenderer _enemySpriteRef;
-		[SerializeField] private Color _normalColor, _damagedColor;
+		[SerializeField] private string _hurtAnimation;
 
-	
 		public void CheckDeath()
 		{
 			if (_health <= 0)
@@ -37,9 +36,13 @@ namespace Game.Enemies
 
 		IEnumerator DamageFeedback()
 		{
-			//_enemySpriteRef.color = Color.red;
+			var enemyAnim = _enemySpriteRef.GetComponent<Animator>();
+			if (enemyAnim)
+			{
+			enemyAnim.Play(_hurtAnimation);
+
+			}
 			yield return null;
-			//_enemySpriteRef.color = _normalColor;
 			CheckDeath();
 		}
 	}

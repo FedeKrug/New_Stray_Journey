@@ -108,6 +108,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _colliderDetector: {fileID: 2665458474519567674}
+  _timeToStopChasing: 3
+  _timeToStopSpecial: 3
 --- !u!1 &2665458474099029085
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,9 +267,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 150
   _enemyRef: {fileID: 2665458474519567674}
-  _enemySpriteRef: {fileID: 0}
-  _normalColor: {r: 0, g: 0, b: 0, a: 0}
-  _damagedColor: {r: 0, g: 0, b: 0, a: 0}
+  _enemySpriteRef: {fileID: 2665458474099029081}
+  _normalColor: {r: 1, g: 1, b: 1, a: 0}
+  _hurtColor: {r: 1, g: 0, b: 0, a: 0}
 --- !u!114 &2665458474519567674
 MonoBehaviour:
   m_ObjectHideFlags: 0

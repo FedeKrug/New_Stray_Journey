@@ -26,6 +26,7 @@ namespace Game.Enemies
 			{
 				_colliderDetector.inAttackRange = false;
 				StartCoroutine(StopChasing());
+				StartCoroutine(StopSpecial());
 
 			}
 			//if (collision.CompareTag("Player"))

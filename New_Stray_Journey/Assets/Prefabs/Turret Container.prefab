@@ -169,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _colliderDetector: {fileID: 3144589767905996894}
   _timeToStopChasing: 0
-  _timeToStopSpecial: 0
+  _timeToStopSpecial: 3
 --- !u!1 &7940353606871132013
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,7 +215,7 @@ Animator:
   m_GameObject: {fileID: 7940353606871132013}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b8f792f4a5e82e4438963dbd48e120da, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -325,7 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ad7eb6141ec6fa408f389f0b31be5e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: {fileID: 0}
+  currentState: {fileID: 2757400807787118064}
 --- !u!114 &7940353607566265867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,8 +341,7 @@ MonoBehaviour:
   _health: 150
   _enemyRef: {fileID: 3144589767905996894}
   _enemySpriteRef: {fileID: 7940353606871132009}
-  _normalColor: {r: 1, g: 1, b: 1, a: 0}
-  _damagedColor: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 0}
+  _hurtAnimation: TurretDamaged
 --- !u!58 &7940353607566265869
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -373,7 +372,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idleDamage: 10
   timeToSpecial: 5
-  movementSpeed: 0
+  movementSpeed: 30
   enemyLife: {fileID: 7940353607566265867}
   inSpecial: 0
   specialReady: 0
@@ -386,7 +385,9 @@ MonoBehaviour:
   - {fileID: 7940353608113907988}
   - {fileID: 6453913044813992091}
   bullet: {fileID: 6506511640988793597, guid: 49777fd885517164f9e050b48d5a7392, type: 3}
-  onAnimation: 0
+  _specialSpeed: 180
+  _specialFireRate: 0.05
+  _timeToChangeDirection: 3
 --- !u!50 &1505425667
 Rigidbody2D:
   serializedVersion: 4

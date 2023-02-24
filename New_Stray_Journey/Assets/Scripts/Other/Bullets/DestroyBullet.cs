@@ -16,6 +16,7 @@ public class DestroyBullet : MonoBehaviour
 		_destroyed = true;
 		Instantiate(_explosion, this.gameObject.transform);
 		_explosionASource.PlayOneShot(_explosionAudio);
+		_bulletToDestroy.GetComponent<SpriteRenderer>().enabled = false;
 		yield return new WaitForSeconds(_explosionTime);
 		_bulletToDestroy.SetActive(false);
 	}

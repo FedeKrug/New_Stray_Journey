@@ -256,9 +256,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 30
   _enemyRef: {fileID: 7086442844815139280}
-  _enemySpriteRef: {fileID: 0}
-  _normalColor: {r: 0, g: 0, b: 0, a: 0}
-  _damagedColor: {r: 0, g: 0, b: 0, a: 0}
+  _enemySpriteRef: {fileID: 7086442844473875536}
+  _hurtAnimation: 
 --- !u!50 &7086442844815139282
 Rigidbody2D:
   serializedVersion: 4

@@ -8,11 +8,10 @@ namespace Game.Enemies
 	public abstract class Enemy : MonoBehaviour
 	{
 		[SerializeField, Range(0, 10)] protected float idleDamage;
-		[SerializeField, Range(0, 10)] protected float timeToSpecial;
+		[SerializeField, Range(0, 10)] protected float timeToSpecial, timeOfSpecial;
 		[SerializeField] protected float movementSpeed;
 		protected float idleTime;
 		[SerializeField] protected EnemyHealth enemyLife;
-		//[SerializeField] protected EnemyRangeDetector rangeOfView;
 		public bool inSpecial, specialReady;
 		public bool inAttackRange, playerDetected;
 		[SerializeField] protected Animator anim;
@@ -40,7 +39,7 @@ namespace Game.Enemies
 			specialReady = true;
 			yield return null;
 			SpecialAttack();
-			yield return null;
+			yield return new WaitForSeconds(timeOfSpecial);
 			specialReady = false;
 
 		}
