@@ -34,7 +34,6 @@ public class EnemyManager : MonoBehaviour
 			if (bullet)
 			{
 				GameObject _bullet = Instantiate(bullet, bulletGenerators[i].transform.position, bulletGenerators[i].transform.rotation);
-				Debug.Log("Disparo Enemigo");
 
 			}
 		}

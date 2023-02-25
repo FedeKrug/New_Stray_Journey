@@ -27,7 +27,17 @@ namespace Game.Enemies
 		protected abstract void Attack();
 		public abstract void SpecialAttack();
 
+		protected virtual void Update()
+		{
+			if (PlayerManager.instance._playerDead)
+			{
+				if (GetComponent<StateManager>())
+				{
+					GetComponent<StateManager>().enabled = false;
 
+				}
+			}
+		}
 		public void StaticDamage()
 		{
 			PlayerManager.instance.TakeDamage(idleDamage);
@@ -42,6 +52,14 @@ namespace Game.Enemies
 			yield return new WaitForSeconds(timeOfSpecial);
 			specialReady = false;
 
+		}
+		protected virtual void Dropping(List<GameObject> droppedObjects)
+		{
+			//spawner de objetos aleatoriamente en un rango definido por cada enemigo
+			for (int i = 0; i < droppedObjects.Count; i++)
+			{
+				Instantiate(droppedObjects[i], transform.position, droppedObjects[i].transform.rotation);
+			}
 		}
 
 	}

@@ -390,9 +390,7 @@ MonoBehaviour:
   - {fileID: 6453913044813992091}
   bullet: {fileID: 6506511640988793597, guid: 49777fd885517164f9e050b48d5a7392, type: 3}
   _specialSpeed: 180
-  _specialFireRate: 0.1
-  _timeToChangeDirection: 3
-  _changedDirection: 0
+  _specialFireRate: 0.4
 --- !u!50 &1505425667
 Rigidbody2D:
   serializedVersion: 4

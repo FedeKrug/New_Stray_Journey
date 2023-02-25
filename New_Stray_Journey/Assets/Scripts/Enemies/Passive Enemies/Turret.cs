@@ -10,15 +10,13 @@ namespace Game.Enemies
 		[SerializeField] protected GameObject bullet;
 		[SerializeField, Range(-360, 360)] private float _specialSpeed;
 		[SerializeField, Range(0, 5)] private float _specialFireRate;
-		[SerializeField] private float _timeToChangeDirection;
-		[SerializeField] private bool _changedDirection;
 		private float _minSpeed, _minFireRate;
 		private void Awake()
 		{
 			_minSpeed = movementSpeed;
 			_minFireRate = remainingTime;
 		}
-		private void Update()
+		protected override void Update()
 		{
 			timeRate -= Time.deltaTime;
 			if (playerDetected)
@@ -61,11 +59,7 @@ namespace Game.Enemies
 		{
 			StartCoroutine(SpecialShooting());
 		}
-		protected void LookAtTarget(Transform target)
-		{
-
-		}
-
+		
 		IEnumerator SpecialShooting()
 		{
 			movementSpeed = _specialSpeed;

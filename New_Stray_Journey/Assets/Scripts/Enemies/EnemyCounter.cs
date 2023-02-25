@@ -26,6 +26,7 @@ namespace Game.Enemies
 			if (enemyCant<=0)
 			{
 				Debug.Log("All enemies are dead");
+				//TODO: Spawn a vortex to pass level
 			}
 		}
 	}

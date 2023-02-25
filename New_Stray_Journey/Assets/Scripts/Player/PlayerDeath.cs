@@ -15,9 +15,8 @@ namespace Game.Player
 		public void Die()
 		{
 			StartCoroutine(Death());
-
 		}
-		IEnumerator Death()
+		 IEnumerator Death()
 		{
 			_anim.Play(_deathAnim);
 			_playerRef.GetComponentInChildren<SpriteRenderer>().enabled = false;

@@ -12,6 +12,7 @@ namespace Game.Player
 		public static PlayerManager instance;
 		[SerializeField] private FloatSO _playerHealth;
 		[SerializeField] private PlayerDeath _playerDeathRef;
+		public bool _playerDead;
 
 		#region Singleton and Awake
 		private void Awake()
@@ -80,7 +81,6 @@ namespace Game.Player
 		public void TakeDamage(float damage)
 		{
 			_playerHealth.value -= damage;
-			Debug.Log("Player Damaged");
 			CheckDeath();
 		}
 
@@ -94,36 +94,13 @@ namespace Game.Player
 			if (_playerHealth.value <= 0)
 			{
 				_playerDeathRef.Die();
-				Debug.Log("Player Death");
+				_playerDead = true;
 			}
 		}
 
 		IEnumerator Death()
 		{
 			yield return new WaitForSeconds(2);
-		}
-	}
-
-	public class ExplosionSpecialAttack : PlayerSpecialShoot
-	{
-		public override void Shot()
-		{
-			throw new NotImplementedException();
-		}
-	}
-
-	public class DispersionSpecialAttack : PlayerSpecialShoot
-	{
-		public override void Shot()
-		{
-
-		}
-	}
-	public class PowerRaySpecialAttack : PlayerSpecialShoot
-	{
-		public override void Shot()
-		{
-			throw new NotImplementedException();
 		}
 	}
 }
