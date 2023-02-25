@@ -10,10 +10,9 @@ namespace Game.Enemies
 		public override State RunCurrentState()
 		{
 
-			if (_normalState.enemyRef.GetComponent<Patroller>() != null)
+			if (_normalState.enemyRef.inAttackRange)
 			{
-				_normalState.enemyRef.GetComponent<Patroller>().Patrol();
-			return this;
+				return _normalState;
 			}
 			else if (_normalState.enemyRef.specialReady)
 			{
@@ -21,6 +20,7 @@ namespace Game.Enemies
 			}
 			else
 			{
+				_normalState.enemyRef.GetComponent<Patroller>().Patrol();
 				return this;
 			}
 		}
