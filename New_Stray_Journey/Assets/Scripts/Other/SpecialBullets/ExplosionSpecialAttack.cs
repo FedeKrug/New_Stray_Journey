@@ -9,30 +9,23 @@ namespace Game.Player
 	{
 		[Header("ExplosionAttack Variables")]
 		[SerializeField] private GameObject _bulletExplosion; //Zone Attack
-		[SerializeField] private bool _hasToExplode;
 
 		protected override void OnEnable()
 		{
 			base.OnEnable();
 			StartCoroutine(StartTimerOfBomb());
 		}
-		protected override void Update()
-		{
-			if (_hasToExplode)
-			{
-				Explode();
-			}
-		}
+		
 		public override void Shot()
 		{
-			Explode();
+			StartCoroutine(StartTimerOfBomb());
 		}
 
 		public void Explode()
 		{
 			speed = 0;
-			Instantiate(_bulletExplosion, transform.position, transform.rotation);
-			
+			_bulletExplosion.SetActive(true);
+			Debug.Log("Explode");
 		}
 
 		protected override void OnTriggerEnter2D(Collider2D collision)
@@ -45,7 +38,7 @@ namespace Game.Player
 		IEnumerator StartTimerOfBomb()
 		{
 			yield return new WaitForSeconds(maxTimeToDestroy);
-			_hasToExplode = true;
+			Explode();
 		}
 	}
 }

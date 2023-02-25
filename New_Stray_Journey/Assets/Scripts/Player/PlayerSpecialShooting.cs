@@ -32,15 +32,15 @@ namespace Game.Player
 				case TypeOfSpecialAttack.Dispersion:
 					if (Input.GetKey(_keyToSpecial))
 					{
-						_specialShots[0].GetComponent<PlayerSpecialShoot>().Shot();
 						EventManager.instance.specialShootingEvent.Invoke(_specialGens, _specialShots[0].gameObject);
+						_specialShots[0].GetComponent<PlayerSpecialShoot>().Shot();
 					}
 					break;
 				case TypeOfSpecialAttack.Explosion:
 					if (Input.GetKeyUp(_keyToSpecial))
 					{
-						_specialShots[1].GetComponent<PlayerSpecialShoot>().Shot();
 						EventManager.instance.specialShootingEvent.Invoke(_specialGens, _specialShots[1].gameObject);
+						//_specialShots[1].GetComponent<PlayerSpecialShoot>().Shot();
 					}
 					break;
 				case TypeOfSpecialAttack.PowerRay:
