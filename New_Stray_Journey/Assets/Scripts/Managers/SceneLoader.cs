@@ -26,6 +26,10 @@ public class SceneLoader : MonoBehaviour
 	public void ChangeScene(string sceneName)
 	{
 		SceneManager.LoadScene(sceneName);
+		if (_playerHealth.value <=0)
+		{
+			_playerHealth.value = 1000;
+		}
 	}
 
 	public void ExitGame()
