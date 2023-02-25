@@ -136,6 +136,7 @@ MonoBehaviour:
   _aSource: {fileID: 3928497810499703545}
   _coinClip: {fileID: 8300000, guid: 76984d3049514f64aadc748ce399c83d, type: 3}
   _spriteR: {fileID: 2821429518507909555}
+  _miniMapSprite: {fileID: 3997941339995596960}
   _rb2d: {fileID: -7156553754494208287}
   _collected: 0
 --- !u!212 &2821429518507909555

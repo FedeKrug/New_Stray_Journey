@@ -54,6 +54,7 @@ MonoBehaviour:
   _aSource: {fileID: 5703799547501853880}
   _coinClip: {fileID: 8300000, guid: 76984d3049514f64aadc748ce399c83d, type: 3}
   _spriteR: {fileID: 6144405493502111236}
+  _miniMapSprite: {fileID: 3599449671389852772}
   _rb2d: {fileID: -8810146826995903896}
   _collected: 0
 --- !u!212 &6144405493502111236

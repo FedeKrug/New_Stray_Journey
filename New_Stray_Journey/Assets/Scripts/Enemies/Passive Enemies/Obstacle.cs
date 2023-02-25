@@ -8,7 +8,7 @@ namespace Game.Enemies
 		[SerializeField] private GameObject _explosion;
 		[SerializeField] private AudioClip _explosionSound;
 		[SerializeField] private GameObject _particlesExplosion;
-		[SerializeField] private SpriteRenderer _spriteR;
+		[SerializeField] private SpriteRenderer _spriteR, _miniMapSprite;
 		public override void Death(EnemyHealth enemyHealth)
 		{
 			StartCoroutine(Explode());
@@ -37,6 +37,7 @@ namespace Game.Enemies
 			aSource.PlayOneShot(_explosionSound);
 			yield return null;
 			_spriteR.enabled = false;
+			_miniMapSprite.enabled = false;
 			while (aSource.isPlaying)
 			{
 				yield return null;

@@ -13,7 +13,7 @@ public class DestroyBullet : MonoBehaviour
 	{
 		_bulletRef.speed = 0;
 		yield return null;
-		_destroyed = true;
+		gameObject.layer = 16;
 		Instantiate(_explosion, this.gameObject.transform);
 		_explosionASource.PlayOneShot(_explosionAudio);
 		_bulletToDestroy.GetComponent<SpriteRenderer>().enabled = false;
