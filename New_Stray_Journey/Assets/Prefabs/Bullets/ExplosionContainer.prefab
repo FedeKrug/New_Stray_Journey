@@ -54,7 +54,7 @@ MonoBehaviour:
   _bulletToDestroy: {fileID: 8794715328765358439}
   _explosion: {fileID: 4475340254605798424, guid: 34d465fbd6655344b9469fc234ae20c6, type: 3}
   _explosionTime: 1.2
-  _bulletRef: {fileID: 0}
+  _bulletRef: {fileID: 4621747758425055096}
   _destroyed: 0
 --- !u!50 &2013030159289637012
 Rigidbody2D:
@@ -205,14 +205,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 150
-  speed: 100
-  _maxTimeToDestroy: 5
+  speed: 50
+  maxTimeToDestroy: 5
   rb2d: {fileID: 2013030159289637012}
   _bulletDestruction: {fileID: 2422103378503909768}
   anim: {fileID: 3110704996987884289}
   explosionAnimation: 
+  shootingAnimation: 
   id: 0
-  _bulletExplosion: {fileID: 0}
+  aSource: {fileID: 8428111627828605460}
+  _bulletExplosion: {fileID: 2735802115609178995, guid: df5c7dc5a3275a14db27ab93fdf6f8f0, type: 3}
   _hasToExplode: 0
 --- !u!70 &1995931157276016098
 CapsuleCollider2D:

@@ -30,7 +30,9 @@ namespace Game.Player
 
 		public void Explode()
 		{
+			speed = 0;
 			Instantiate(_bulletExplosion, transform.position, transform.rotation);
+			
 		}
 
 		protected override void OnTriggerEnter2D(Collider2D collision)

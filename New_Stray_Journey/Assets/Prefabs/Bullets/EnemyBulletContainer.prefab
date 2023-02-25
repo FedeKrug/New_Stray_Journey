@@ -133,7 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   speed: -80
-  _maxTimeToDestroy: 3
+  maxTimeToDestroy: 5
   rb2d: {fileID: 6506511640988793568}
   _bulletDestruction: {fileID: 6506511640988793570}
 --- !u!114 &6506511640988793570
