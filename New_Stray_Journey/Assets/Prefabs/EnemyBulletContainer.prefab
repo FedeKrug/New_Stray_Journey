@@ -133,7 +133,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   speed: -80
-  damageModifier: 1
   _maxTimeToDestroy: 3
   rb2d: {fileID: 6506511640988793568}
   _bulletDestruction: {fileID: 6506511640988793570}
@@ -155,6 +154,7 @@ MonoBehaviour:
   _explosion: {fileID: 5039813494743034477, guid: 5f11ec4d15e072c49bd543df413901c9, type: 3}
   _explosionTime: 1.2
   _bulletRef: {fileID: 6506511640988793571}
+  _destroyed: 0
 --- !u!82 &6506511640988793569
 AudioSource:
   m_ObjectHideFlags: 0
@@ -165,7 +165,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 3d433c640ea9cf745949a7b07f526b41, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.047
   m_Pitch: 1

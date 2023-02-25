@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - WayPoint
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Interactables
   - Collectables
   - Obstacle
-  - 
+  - WayPoints
   - 
   - 
   - 
