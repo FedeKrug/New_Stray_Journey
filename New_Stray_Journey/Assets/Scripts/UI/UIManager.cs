@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Game.SO;
 using TMPro;
+using Game.Enemies;
 
 public class UIManager : MonoBehaviour
 {
@@ -21,7 +22,9 @@ public class UIManager : MonoBehaviour
 
 	[Header("EnemyCounter")]
 	[SerializeField] private IntSO _enemyCantRef;
+	[SerializeField] private EnemyCounter _enemyCouneterRef;
 	[SerializeField] private TextMeshProUGUI _enemyCounterText;
+	[SerializeField] private TextMeshProUGUI _totalEnemyDead;
     void Awake()
     {
         if (instance == null)
@@ -79,6 +82,7 @@ public class UIManager : MonoBehaviour
 
 	public void EnemyCounterUIHandler()
 	{
-		_enemyCounterText.text = $"Enemies: { _enemyCantRef.value.ToString()}";
+		_enemyCounterText.text = $"Enemies: { _enemyCouneterRef.enemyCant}";
+		_totalEnemyDead.text = $"Total Enemies Killed: {_enemyCantRef.value}";
 	}
 }
