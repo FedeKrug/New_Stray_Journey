@@ -25,7 +25,6 @@ namespace Game.Enemies
 		{
 			LookAtTarget(_wayPointTarget);
 			transform.Translate(-Vector2.up * movementSpeed * Time.deltaTime);
-			Debug.Log("Patrolling");
 		}
 
 		private void LookAtTarget(Transform wayPointTarget)

@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
 	public float damage;
 	[Range(-250, 250f)] public float speed;
 	[Header("Destroying Bullets: ")]
-	[SerializeField, Range(0, 15f)] protected float _maxTimeToDestroy;
+	[SerializeField, Range(0, 15f)] protected float maxTimeToDestroy;
 	[SerializeField] public Rigidbody2D rb2d;
 	[SerializeField] private DestroyBullet _bulletDestruction;
 
@@ -19,8 +19,7 @@ public class Bullet : MonoBehaviour
 
 	protected virtual void Update()
 	{
-
-		Destroy(gameObject, _maxTimeToDestroy);
+		Destroy(gameObject, maxTimeToDestroy);
 	}
 
 	protected virtual void FixedUpdate()
