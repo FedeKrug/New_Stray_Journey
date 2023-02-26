@@ -13,7 +13,8 @@ namespace Game.Player
 		[SerializeField] private FloatSO _playerHealth;
 		[SerializeField] private PlayerDeath _playerDeathRef;
 		public bool playerDead;
-		public bool onSpecial;
+		public bool usingSpecial;
+		public bool grabbedSpecial;
 		#region Singleton and Awake
 		private void Awake()
 		{
@@ -95,6 +96,13 @@ namespace Game.Player
 				_playerDeathRef.Die();
 				playerDead = true;
 			}
+		}
+
+		public IEnumerator UseSpecial()
+		{
+			yield return new WaitForSeconds(UIManager.instance.timeToSpecial);
+			usingSpecial = false;
+			grabbedSpecial = false;
 		}
 
 	}

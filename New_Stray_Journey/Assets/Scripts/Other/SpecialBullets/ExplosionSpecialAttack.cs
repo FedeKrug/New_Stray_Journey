@@ -21,7 +21,6 @@ namespace Game.Player
 		{
 			speed = 0;
 			_bulletExplosion.SetActive(true);
-			Debug.Log("Explode");
 		}
 
 		private void OnTriggerEnter2D(Collider2D collision)

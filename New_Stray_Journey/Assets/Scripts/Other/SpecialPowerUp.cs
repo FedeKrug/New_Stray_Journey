@@ -1,16 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+
 
 namespace Game.Player
 {
 	public class SpecialPowerUp : MonoBehaviour, Collectable
 	{
 		public TypeOfSpecialAttack typeOfSpecial;
-		
+		[SerializeField] private Image _icon;
+		[SerializeField] private Image _image;
 		public void Collect()
 		{
-			PlayerManager.instance.onSpecial = true;
-			StartCoroutine(TurnOffSpecial());
+
+			PlayerManager.instance.grabbedSpecial = true;
+			StartCoroutine(TakeSpecial());
+			EventManager.instance.specialAttackUIIConEvent.Invoke(_icon);
+			if (PlayerManager.instance.usingSpecial)
+			{
+				EventManager.instance.specialAttackUIEvent.Invoke(_image);
+				StartCoroutine(PlayerManager.instance.UseSpecial());
+			}
+
 		}
 		public int SelectSpecialByType()
 		{
@@ -25,13 +36,13 @@ namespace Game.Player
 			return -1;
 		}
 
-		IEnumerator TurnOffSpecial()
+		IEnumerator TakeSpecial()
 		{
 			GetComponent<SpriteRenderer>().enabled = false;
-			yield return new WaitForSeconds(UIManager.instance.timeToSpecial);
-			PlayerManager.instance.onSpecial = false;
-			Debug.Log($"Special Attack: {typeOfSpecial}");
+			yield return null;
 			gameObject.SetActive(false);
 		}
+
+
 	}
 }

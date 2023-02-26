@@ -21,8 +21,7 @@ public class UIManager : MonoBehaviour
 	[SerializeField] private List<Image> _specialAttackIcons;
 	[SerializeField] private List<Image> _specialAttacks;//icons
 	public float timeToSpecial;
-	[SerializeField] private float _maxTime;
-	[SerializeField] private PlayerSpecialShooting _playerSpecialShootingRef;
+	
 
 	[Header("EnemyCounter")]
 	[SerializeField] private IntSO _enemyCantRef;
@@ -50,38 +49,34 @@ public class UIManager : MonoBehaviour
 	{
 		EventManager.instance.healthBarEvent.AddListener(UpdateHealthBarHandler);
 		EventManager.instance.enemyCounterUIEvent.AddListener(EnemyCounterUIHandler);
-		EventManager.instance.specialAttackUIEvent.AddListener(SpecialAttackUIHandler);
+		EventManager.instance.specialAttackUIEvent.AddListener(UseSpecialAttackUIHandler);
+		EventManager.instance.specialAttackUIIConEvent.AddListener(ShowSpecialAttackIconsHandler);
 	}
 
 	private void OnDisable()
 	{
 		EventManager.instance.healthBarEvent.RemoveListener(UpdateHealthBarHandler);
 		EventManager.instance.enemyCounterUIEvent.RemoveListener(EnemyCounterUIHandler);
-		EventManager.instance.specialAttackUIEvent.RemoveListener(SpecialAttackUIHandler);
+		EventManager.instance.specialAttackUIEvent.RemoveListener(UseSpecialAttackUIHandler);
+		EventManager.instance.specialAttackUIIConEvent.RemoveListener(ShowSpecialAttackIconsHandler);
 	}
 	public void UpdateHealthBarHandler()
 	{
 		_healthBar.fillAmount = _playerHealth.value / 1000;
 	}
 
-	public void SpecialAttackUIHandler(Image currentSpecial)
-	{
-		currentSpecial.gameObject.SetActive(true);
-		UseSpecialAttackUI(currentSpecial);
-		ShowSpecialAttackIcons(currentSpecial);
-	}
 
-	public void UseSpecialAttackUI(Image currentSpecial)
+	public void UseSpecialAttackUIHandler(Image currentSpecial)
 	{
-		if (timeToSpecial > 0)
+		for (int i =0; i<_specialAttacks.Count; i++)
 		{
-			timeToSpecial -= Time.deltaTime;
-			currentSpecial.fillAmount = timeToSpecial / _maxTime;
+			_specialAttacks[i].gameObject.SetActive(false);
 		}
+		currentSpecial.gameObject.SetActive(true);
 
 	}
 
-	public void ShowSpecialAttackIcons(Image currentIcon)
+	public void ShowSpecialAttackIconsHandler(Image currentIcon)
 	{
 		for (int i = 0; i < _specialAttackIcons.Count; i++)
 		{
