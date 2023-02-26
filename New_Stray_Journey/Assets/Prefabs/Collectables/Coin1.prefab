@@ -56,7 +56,6 @@ MonoBehaviour:
   _spriteR: {fileID: 5330863256033380209}
   _miniMapSprite: {fileID: 654230503182301261}
   _rb2d: {fileID: 5811204243461887315}
-  _collected: 0
 --- !u!212 &5330863256033380209
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -118,7 +117,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
