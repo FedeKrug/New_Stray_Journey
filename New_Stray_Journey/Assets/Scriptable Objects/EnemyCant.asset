@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6edc94c349c8790448a115f8c3a68767, type: 3}
   m_Name: EnemyCant
   m_EditorClassIdentifier: 
-  value: 12
+  value: 0
