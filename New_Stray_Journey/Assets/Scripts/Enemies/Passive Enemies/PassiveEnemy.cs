@@ -8,11 +8,6 @@ namespace Game.Enemies
 		[SerializeField, Range(0, 5)] protected float remainingTime;
 		protected float timeRate;
 
-		protected virtual void ConstantMove()
-		{
-
-		}
-
 		protected virtual IEnumerator Explode()
 		{
 			//anim.Play("DeathAnimation"); //uso anim.Play para que solo se reproduzca una vez la animacion

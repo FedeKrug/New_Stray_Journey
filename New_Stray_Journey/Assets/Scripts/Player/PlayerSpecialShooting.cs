@@ -15,12 +15,12 @@ namespace Game.Player
 		[SerializeField] private Image _explosionImage, _powerRayImage;
 		void Update()
 		{
-			//if (PlayerManager.instance.grabbedSpecial)
-			//{
-				
+			if (PlayerManager.instance.usingSpecial)
+			{
+				SelectSpecial();
 
-			//}
-			
+			}
+
 			if (Input.GetKeyDown(KeyCode.T) && PlayerManager.instance.grabbedSpecial)
 			{
 				PlayerManager.instance.usingSpecial = true;

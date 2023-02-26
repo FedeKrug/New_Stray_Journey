@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace Game.Enemies
 {
-	public class BlackHole : Trap
+	public class BlackHole : ExplosionTrap
 	{
 		[SerializeField, Range(0,100)] private float _holeForce;
 		[SerializeField] private bool _inHoleRadius;

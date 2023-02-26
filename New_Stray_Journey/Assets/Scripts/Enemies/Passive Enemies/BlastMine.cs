@@ -1,6 +1,6 @@
 ﻿namespace Game.Enemies
 {
-	public class BlastMine : Trap
+	public class BlastMine : ExplosionTrap
 	{
 
 	}

@@ -6629,6 +6629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e9081b90299faf4699ab3cf7c4bf6ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  typeOfSpecial: 0
   _keyToSpecial: 32
   _specialShots:
   - {fileID: 1002894117320158951, guid: d3ae829238c760f4ea35fde1b32f43fd, type: 3}
@@ -6636,6 +6637,8 @@ MonoBehaviour:
   _specialGens:
   - {fileID: 8443796295072780440}
   _playerInteraction: {fileID: 894957221}
+  _explosionImage: {fileID: 0}
+  _powerRayImage: {fileID: 0}
 --- !u!114 &8443796294928771748
 MonoBehaviour:
   m_ObjectHideFlags: 0
