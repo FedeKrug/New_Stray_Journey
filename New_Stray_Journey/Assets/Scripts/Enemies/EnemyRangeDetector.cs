@@ -33,7 +33,7 @@ namespace Game.Enemies
 		}
 		private void OnTriggerStay2D(Collider2D collision)
 		{
-			if (collision.CompareTag("Player") && _colliderDetector.GetComponent<EnemyHealth>().Health >0)
+			if (collision.CompareTag("Player") && /*_colliderDetector.GetComponent<EnemyHealth>().Health >0*/ gameObject.activeSelf)
 			{
 				StartCoroutine(_colliderDetector.ChargingSpecial());
 

@@ -10,9 +10,9 @@ namespace Game.Enemies
 		[SerializeField] private GameObject _bigExplosion;
 		protected override void Attack()
 		{
-			base.Attack();
-			_bigExplosion.SetActive(true);
-			StartCoroutine(Explode());
+			//base.Attack();
+			//_bigExplosion.SetActive(true);
+			StartCoroutine(Explota());
 		}
 
 		private void OnTriggerEnter2D(Collider2D collision)
@@ -21,6 +21,22 @@ namespace Game.Enemies
 			{
 				Attack();
 			}
+		}
+
+		IEnumerator Explota()
+		{
+			_bigExplosion.SetActive(true);
+			particlesExplosion.SetActive(true);
+			this.GetComponent<Collider2D>().enabled = false;
+			aSource.PlayOneShot(explosionSound);
+			yield return null;
+			spriteR.enabled = false;
+			miniMapSprite.enabled = false;
+			while (aSource.isPlaying)
+			{
+				yield return null;
+			}
+			this.gameObject.SetActive(false);
 		}
 	}
 }

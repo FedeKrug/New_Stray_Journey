@@ -16,7 +16,7 @@ namespace Game.Player
 			}
 			if (collision.CompareTag("Player") && GetComponentInParent<ExplosionTrap>())
 			{
-				PlayerManager.instance.TakeDamage(_damage);
+				PlayerManager.instance.TakeDamage(_damage/2);
 			}
 
 		}

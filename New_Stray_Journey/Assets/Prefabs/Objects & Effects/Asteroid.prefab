@@ -324,10 +324,10 @@ MonoBehaviour:
   droppingObjects: []
   remainingTime: 0
   _explosion: {fileID: 5039813494743034477, guid: 5f11ec4d15e072c49bd543df413901c9, type: 3}
-  _explosionSound: {fileID: 8300000, guid: 355af8d5e0df24b48b7ed0c957f7cff7, type: 3}
-  _particlesExplosion: {fileID: 7360871681520109078}
-  _spriteR: {fileID: 7086442844473875536}
-  _miniMapSprite: {fileID: 3050276891016568346}
+  explosionSound: {fileID: 8300000, guid: 355af8d5e0df24b48b7ed0c957f7cff7, type: 3}
+  particlesExplosion: {fileID: 7360871681520109078}
+  spriteR: {fileID: 7086442844473875536}
+  miniMapSprite: {fileID: 3050276891016568346}
 --- !u!114 &7086442844815139287
 MonoBehaviour:
   m_ObjectHideFlags: 0

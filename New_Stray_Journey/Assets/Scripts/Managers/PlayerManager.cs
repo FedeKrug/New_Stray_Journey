@@ -87,6 +87,10 @@ namespace Game.Player
 		public void IncreaseHealth(float healthBooster)
 		{
 			_playerHealth.value += healthBooster;
+			if (_playerHealth.value >1000)
+			{
+				_playerHealth.value = 1000;
+			}
 		}
 
 		public void CheckDeath()

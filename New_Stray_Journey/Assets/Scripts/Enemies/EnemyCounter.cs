@@ -6,7 +6,7 @@ namespace Game.Enemies
 	{
 		public int enemyCant ;
 		[SerializeField] IntSO _totalEnemies;
-
+		[SerializeField] private GameObject _passLevelObject;
 		private void Start()
 		{
 			EventManager.instance.enemyCounterUIEvent.Invoke();
@@ -25,7 +25,7 @@ namespace Game.Enemies
 		{
 			if (enemyCant<=0)
 			{
-				Debug.Log("All enemies are dead");
+				_passLevelObject.SetActive(true);
 				//TODO: Spawn a vortex to pass level
 			}
 		}

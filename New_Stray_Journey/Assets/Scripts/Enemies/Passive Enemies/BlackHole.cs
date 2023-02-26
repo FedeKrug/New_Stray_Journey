@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace Game.Enemies
 {
-	public class BlackHole : ExplosionTrap
+	public class BlackHole : MonoBehaviour
 	{
 		[SerializeField, Range(0,100)] private float _holeForce;
 		[SerializeField, Tooltip("Hole Center rb2d")] private Rigidbody2D _rb2d;

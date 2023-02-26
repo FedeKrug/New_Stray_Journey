@@ -6,9 +6,9 @@ namespace Game.Enemies
 	public class Obstacle : PassiveEnemy
 	{
 		[SerializeField] private GameObject _explosion;
-		[SerializeField] private AudioClip _explosionSound;
-		[SerializeField] private GameObject _particlesExplosion;
-		[SerializeField] private SpriteRenderer _spriteR, _miniMapSprite;
+		[SerializeField] protected AudioClip explosionSound;
+		[SerializeField] protected GameObject particlesExplosion;
+		[SerializeField] protected SpriteRenderer spriteR, miniMapSprite;
 		public override void Death(EnemyHealth enemyHealth)
 		{
 			StartCoroutine(Explode());
@@ -24,12 +24,12 @@ namespace Game.Enemies
 		protected override IEnumerator Explode()
 		{
 			_explosion.SetActive(true);
-			_particlesExplosion.SetActive(true);
+			particlesExplosion.SetActive(true);
 			this.GetComponent<Collider2D>().enabled = false;
-			aSource.PlayOneShot(_explosionSound);
+			aSource.PlayOneShot(explosionSound);
 			yield return null;
-			_spriteR.enabled = false;
-			_miniMapSprite.enabled = false;
+			spriteR.enabled = false;
+			miniMapSprite.enabled = false;
 			while (aSource.isPlaying)
 			{
 				yield return null;

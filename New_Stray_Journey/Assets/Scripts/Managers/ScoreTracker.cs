@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Game.Player;
 using Game.SO;
-using UnityEngine.UI;
 using TMPro;
 
 
