@@ -29,7 +29,7 @@ namespace Game.Enemies
 
 		protected virtual void Update()
 		{
-			if (PlayerManager.instance._playerDead)
+			if (PlayerManager.instance.playerDead)
 			{
 				if (GetComponent<StateManager>())
 				{

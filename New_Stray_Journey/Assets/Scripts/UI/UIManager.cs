@@ -5,37 +5,41 @@ using UnityEngine.UI;
 using Game.SO;
 using TMPro;
 using Game.Enemies;
+using Game.Player;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager instance;
-
-	[Header ("HealthBar")]
-    [SerializeField] private Image _healthBar;
-    [SerializeField] private FloatSO _playerHealth;
+	public static UIManager instance;
 
 
-	[Header ("SpecialAttacks")]
-	[SerializeField] private List<Image> _specialAttacks;
-	[SerializeField] private float _timeToSpecial;
+	[Header("HealthBar")]
+	[SerializeField] private Image _healthBar;
+	[SerializeField] private FloatSO _playerHealth;
+
+
+	[Header("SpecialAttacks")]
+	[SerializeField] private List<Image> _specialAttackIcons;
+	[SerializeField] private List<Image> _specialAttacks;//icons
+	public float timeToSpecial;
 	[SerializeField] private float _maxTime;
+	[SerializeField] private PlayerSpecialShooting _playerSpecialShootingRef;
 
 	[Header("EnemyCounter")]
 	[SerializeField] private IntSO _enemyCantRef;
 	[SerializeField] private EnemyCounter _enemyCouneterRef;
 	[SerializeField] private TextMeshProUGUI _enemyCounterText;
 	[SerializeField] private TextMeshProUGUI _totalEnemyDead;
-    void Awake()
-    {
-        if (instance == null)
+	void Awake()
+	{
+		if (instance == null)
 		{
-            instance = this;
+			instance = this;
 		}
-        else
+		else
 		{
-            Destroy(gameObject);
+			Destroy(gameObject);
 		}
-    }
+	}
 
 	private void Update()
 	{
@@ -45,39 +49,45 @@ public class UIManager : MonoBehaviour
 	private void OnEnable()
 	{
 		EventManager.instance.healthBarEvent.AddListener(UpdateHealthBarHandler);
-		EventManager.instance.specialUIEvent.AddListener(SpecialAttackUIHandler);
 		EventManager.instance.enemyCounterUIEvent.AddListener(EnemyCounterUIHandler);
-
+		EventManager.instance.specialAttackUIEvent.AddListener(SpecialAttackUIHandler);
 	}
 
 	private void OnDisable()
 	{
 		EventManager.instance.healthBarEvent.RemoveListener(UpdateHealthBarHandler);
-		EventManager.instance.specialUIEvent.RemoveListener(SpecialAttackUIHandler);
 		EventManager.instance.enemyCounterUIEvent.RemoveListener(EnemyCounterUIHandler);
+		EventManager.instance.specialAttackUIEvent.RemoveListener(SpecialAttackUIHandler);
 	}
 	public void UpdateHealthBarHandler()
 	{
-		_healthBar.fillAmount = _playerHealth.value/1000;
+		_healthBar.fillAmount = _playerHealth.value / 1000;
 	}
 
-	public void SpecialAttackUIHandler()
+	public void SpecialAttackUIHandler(Image currentSpecial)
 	{
-		for (int i =0; i < _specialAttacks.Count; i++)
-		{
-
-		}
+		currentSpecial.gameObject.SetActive(true);
+		UseSpecialAttackUI(currentSpecial);
+		ShowSpecialAttackIcons(currentSpecial);
 	}
 
 	public void UseSpecialAttackUI(Image currentSpecial)
 	{
-		if (_timeToSpecial>0)
+		if (timeToSpecial > 0)
 		{
-
-		_timeToSpecial -= Time.deltaTime;
+			timeToSpecial -= Time.deltaTime;
+			currentSpecial.fillAmount = timeToSpecial / _maxTime;
 		}
 
-		currentSpecial.fillAmount = 0;
+	}
+
+	public void ShowSpecialAttackIcons(Image currentIcon)
+	{
+		for (int i = 0; i < _specialAttackIcons.Count; i++)
+		{
+			_specialAttackIcons[i].gameObject.SetActive(false);
+		}
+		currentIcon.gameObject.SetActive(true);
 	}
 
 	public void EnemyCounterUIHandler()

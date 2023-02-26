@@ -15,11 +15,7 @@ namespace Game.Player
 			base.OnEnable();
 			StartCoroutine(StartTimerOfBomb());
 		}
-		
-		public override void Shot()
-		{
-			StartCoroutine(StartTimerOfBomb());
-		}
+	
 
 		public void Explode()
 		{
@@ -28,7 +24,7 @@ namespace Game.Player
 			Debug.Log("Explode");
 		}
 
-		protected override void OnTriggerEnter2D(Collider2D collision)
+		private void OnTriggerEnter2D(Collider2D collision)
 		{
 			if (collision.GetComponent<Enemy>())
 			{

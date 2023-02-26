@@ -7,53 +7,41 @@ namespace Game.Player
 {
 	public class PlayerSpecialShooting : MonoBehaviour
 	{
-		[SerializeField] private TypeOfSpecialAttack _typeOfSpecial;
-		public bool onSpecial;
+		public int typeOfSpecial;
 		[SerializeField] private KeyCode _keyToSpecial;
-		[SerializeField, Tooltip("0 = Dispersion, 1 = Explosion, 2 = PowerRay")] private List<GameObject> _specialShots;
+		[SerializeField, Tooltip("0 = Explosion, 1 = PowerRay")] private List<GameObject> _specialShots;
 		[SerializeField] private List<GameObject> _specialGens;
-
+		[SerializeField] private PlayerInteraction _playerInteraction;
 		void Update()
 		{
-			if (onSpecial)
+			if (PlayerManager.instance.onSpecial)
 			{
 				SelectSpecial();
-				
+
 			}
 			else return;
-			
+
 		}
 
 		private void SelectSpecial() //TODO: Change the special Attack enum when player takes the Special Object
 		{
-
-			switch (_typeOfSpecial)
+			typeOfSpecial = _playerInteraction.special;
+			switch (typeOfSpecial)
 			{
-				case TypeOfSpecialAttack.Dispersion:
-					if (Input.GetKey(_keyToSpecial))
-					{
-						EventManager.instance.specialShootingEvent.Invoke(_specialGens, _specialShots[0].gameObject);
-						_specialShots[0].GetComponent<PlayerSpecialShoot>().Shot();
-					}
-					break;
-				case TypeOfSpecialAttack.Explosion:
+
+				case 0:
 					if (Input.GetKeyUp(_keyToSpecial))
 					{
-						EventManager.instance.specialShootingEvent.Invoke(_specialGens, _specialShots[1].gameObject);
-						//_specialShots[1].GetComponent<PlayerSpecialShoot>().Shot();
+						EventManager.instance.specialShootingEvent.Invoke(_specialGens, _specialShots[0].gameObject);
 					}
 					break;
-				case TypeOfSpecialAttack.PowerRay:
+				case 1:
 					if (Input.GetKeyDown(_keyToSpecial))
 					{
-						_specialShots[2].GetComponent<PowerRaySpecialAttack>().Shot();
-						//EventManager.instance.specialShootingEvent.Invoke(_specialGens, _specialShots[2].gameObject);
+						_specialShots[1].gameObject.SetActive(true);
 					}
 					break;
 			}
-
-
-
 		}
 	}
 

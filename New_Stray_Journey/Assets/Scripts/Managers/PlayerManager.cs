@@ -12,8 +12,8 @@ namespace Game.Player
 		public static PlayerManager instance;
 		[SerializeField] private FloatSO _playerHealth;
 		[SerializeField] private PlayerDeath _playerDeathRef;
-		public bool _playerDead;
-
+		public bool playerDead;
+		public bool onSpecial;
 		#region Singleton and Awake
 		private void Awake()
 		{
@@ -72,7 +72,6 @@ namespace Game.Player
 					GameObject _bullet = Instantiate(bullet, bulletGenerators[i].transform.position, bulletGenerators[i].transform.rotation);
 					_bullet.transform.position = bulletGenerators[i].transform.position;
 					Debug.Log("Disparo");
-
 				}
 				
 			}
@@ -94,13 +93,9 @@ namespace Game.Player
 			if (_playerHealth.value <= 0)
 			{
 				_playerDeathRef.Die();
-				_playerDead = true;
+				playerDead = true;
 			}
 		}
 
-		IEnumerator Death()
-		{
-			yield return new WaitForSeconds(2);
-		}
 	}
 }

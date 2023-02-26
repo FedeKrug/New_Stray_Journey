@@ -18,7 +18,7 @@ public class Coin : MonoBehaviour, Collectable
 	{
 		ScoreTracker.instance.IncreaseScore(_coinScore);
 		StartCoroutine(CoinExplosion());
-
+		_collected = true;
 	}
 
 	IEnumerator CoinExplosion()
@@ -38,11 +38,5 @@ public class Coin : MonoBehaviour, Collectable
 		gameObject.SetActive(false);
 
 	}
-	private void OnTriggerEnter2D(Collider2D collision)
-	{
-		if (collision.GetComponent<PlayerInteraction>())
-		{
-			_collected = true;
-		}
-	}
+	
 }
