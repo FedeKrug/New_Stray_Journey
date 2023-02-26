@@ -383,7 +383,13 @@ MonoBehaviour:
   playerDetected: 0
   anim: {fileID: 7940353606871132006}
   aSource: {fileID: 2317361394518220115}
-  droppingObjects: []
+  droppingObjects:
+  - {fileID: 5330863256033380239, guid: eeba16fa0188bdc4a9725fd226db0437, type: 3}
+  - {fileID: 7994577451885786025, guid: db78689feef230c4e92a7f8fc99b9bf4, type: 3}
+  - {fileID: 6144405493502111234, guid: 05205d01163b37c41904ad66483d6fb5, type: 3}
+  - {fileID: 2821429518507909553, guid: 153c83e6547187e4c88e942bd54b2af0, type: 3}
+  - {fileID: 9143450262290128038, guid: 4c7a406260385664a99607b1d7545faf, type: 3}
+  - {fileID: 2896649386962657470, guid: 55f6342a5a8d904488483aaa4cbaa93c, type: 3}
   remainingTime: 0.8
   bulletGens:
   - {fileID: 7940353608113907988}

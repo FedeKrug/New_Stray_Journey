@@ -14,8 +14,9 @@ namespace Game.Enemies
 		[SerializeField] private float _deathTime;
 		[SerializeField] private float _distance;
 		[SerializeField] private Rigidbody2D _rb2d;
-		private void Update()
+		protected override void Update()
 		{
+			base.Update();
 			timeRate -= Time.deltaTime;
 			if (inAttackRange)
 			{

@@ -19,15 +19,7 @@ namespace Game.Enemies
 			StaticDamage();
 		}
 
-		public override void SpecialAttack()
-		{
-			//Damage with the obstacle destruction
-
-
-			_particlesExplosion.SetActive(true);
-
-
-		}
+		public override void SpecialAttack() { }
 
 		protected override IEnumerator Explode()
 		{

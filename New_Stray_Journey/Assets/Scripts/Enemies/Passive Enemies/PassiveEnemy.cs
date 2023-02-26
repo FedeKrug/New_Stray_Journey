@@ -10,13 +10,6 @@ namespace Game.Enemies
 
 		protected virtual IEnumerator Explode()
 		{
-			//anim.Play("DeathAnimation"); //uso anim.Play para que solo se reproduzca una vez la animacion
-			////en la animacion de muerte se activa un bool onAnimation que se desactiva al finalizar la animacion
-
-			//while (onAnimation)
-			//{
-			//	yield return null;
-			//}
 			Debug.Log("Enemy is dead");
 
 			yield return null;

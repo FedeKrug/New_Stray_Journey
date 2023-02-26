@@ -887,7 +887,7 @@ MonoBehaviour:
   rayCollider2D: {fileID: 5086767902319703229}
   rayWidth: 0.8
   rayCollider: {fileID: 584971367402965886}
-  _rayForce: -50
+  _rayForce: -20
 --- !u!1 &2386948146886331965
 GameObject:
   m_ObjectHideFlags: 0
@@ -6868,7 +6868,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: -6451659011051416826, guid: cd24376af40deb9459e3f1e361391d80, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

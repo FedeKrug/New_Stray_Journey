@@ -13,12 +13,11 @@ public class Coin : MonoBehaviour, Collectable
 	[SerializeField] private AudioClip _coinClip;
 	[SerializeField] private SpriteRenderer _spriteR, _miniMapSprite;
 	[SerializeField] private Rigidbody2D _rb2d;
-	[SerializeField] private bool _collected;
 	public void Collect()
 	{
 		ScoreTracker.instance.IncreaseScore(_coinScore);
 		StartCoroutine(CoinExplosion());
-		_collected = true;
+		//_collected = true;
 	}
 
 	IEnumerator CoinExplosion()
