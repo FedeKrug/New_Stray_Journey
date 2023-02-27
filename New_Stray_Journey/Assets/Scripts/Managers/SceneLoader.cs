@@ -26,6 +26,7 @@ public class SceneLoader : MonoBehaviour
 	public void ChangeScene(string sceneName)
 	{
 		SceneManager.LoadScene(sceneName);
+		Time.timeScale = 1;
 		if (_playerHealth.value <=0)
 		{
 			_playerHealth.value = 1000;

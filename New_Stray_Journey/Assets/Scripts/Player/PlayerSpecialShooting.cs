@@ -21,7 +21,7 @@ namespace Game.Player
 
 			}
 
-			if (Input.GetKeyDown(KeyCode.T) && PlayerManager.instance.grabbedSpecial)
+			if (Input.GetKeyDown(KeyCode.F) && PlayerManager.instance.grabbedSpecial)
 			{
 				PlayerManager.instance.usingSpecial = true;
 				SelectSpecial();
