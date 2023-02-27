@@ -8,9 +8,11 @@ public class Vortex : MonoBehaviour
 	[SerializeField] private string _nextScene;
 	[SerializeField] private AudioSource _aSource;
 	[SerializeField] private AudioClip _vortexSound;
+	[SerializeField] private SpriteRenderer _playerFireSprite;
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
+		collision.GetComponentInChildren<SpriteRenderer>().enabled = false;
 		collision.GetComponentInChildren<SpriteRenderer>().enabled = false;
 		StartCoroutine(GoToNextLevel()) ;
 	}

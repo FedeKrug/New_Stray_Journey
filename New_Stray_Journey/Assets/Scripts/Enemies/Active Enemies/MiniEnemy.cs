@@ -62,7 +62,6 @@ namespace Game.Enemies
 
 		public override void SpecialAttack()
 		{
-			Debug.Log("Kamikaze Attack");		
 		}
 
 		protected IEnumerator Explode()
