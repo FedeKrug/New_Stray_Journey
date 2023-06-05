@@ -13,7 +13,7 @@ namespace Game.Camera
 		private Vector3 _cameraPos;
 		private Vector3 velocity = Vector3.zero;
 
-		private void LateUpdate()
+		private void FixedUpdate()
 		{
 			_cameraPos = new Vector3(_player.position.x, _player.position.y, -10);
 			transform.position = Vector3.SmoothDamp(gameObject.transform.position, _cameraPos, ref velocity, dampTime);

@@ -1,14 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Game.SO;
 
 public class GameManager : MonoBehaviour
 {
 	public static GameManager instance;
-    void Awake()
-    {
-        if (instance == null)
+	[SerializeField] private FloatSO _playerLife;
+	[SerializeField] private TextMeshProUGUI _scoreText;
+
+	void Awake()
+	{
+		if (instance == null)
 		{
 			instance = this;
 		}
@@ -16,21 +18,16 @@ public class GameManager : MonoBehaviour
 		{
 			Destroy(gameObject);
 		}
-    }
-
+	}
 
 	private void OnEnable()
 	{
-		EventManager.instance.scoreEvent.AddListener(UpdateScoreHandler);
+		
+
 	}
 	private void OnDisable()
 	{
-		EventManager.instance.scoreEvent.RemoveListener(UpdateScoreHandler);
 		
-	}
 
-	public void UpdateScoreHandler(string scoreText, TextMeshProUGUI scoreUI)
-	{
-		Debug.Log("Score is being updated");
 	}
 }

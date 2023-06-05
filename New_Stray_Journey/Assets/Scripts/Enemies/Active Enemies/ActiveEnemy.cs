@@ -5,16 +5,16 @@ namespace Game.Enemies
 {
 	public abstract class ActiveEnemy : Enemy
 	{
-		[SerializeField] protected float movementSpeed;
+		
 		[SerializeField] protected Transform playerRef;
 		public abstract void Move(Transform target);
 
-		protected virtual void Dropping(List<GameObject> droppedObjects)
+		
+
+		public float MovementSpeed
 		{
-			//spawner de objetos aleatoriamente en un rango definido por cada enemigo
+			get => movementSpeed; set => value = movementSpeed;
 		}
-
-
 
 	}
 }

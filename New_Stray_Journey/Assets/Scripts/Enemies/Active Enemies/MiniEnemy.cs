@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace Game.Enemies
 {
@@ -9,9 +10,13 @@ namespace Game.Enemies
 		protected float timeRate;
 		[SerializeField] protected List<GameObject> bulletGens;
 		[SerializeField] protected GameObject bullet;
-
-		private void Update()
+		[SerializeField] private string _deathAnim;
+		[SerializeField] private float _deathTime;
+		[SerializeField] private float _distance;
+		[SerializeField] private Rigidbody2D _rb2d;
+		protected override void Update()
 		{
+			base.Update();
 			timeRate -= Time.deltaTime;
 			if (inAttackRange)
 			{
@@ -47,7 +52,7 @@ namespace Game.Enemies
 
 		public override void Death(EnemyHealth enemyHealth)
 		{
-			//Explode();
+			StartCoroutine(Explode());
 		}
 
 		protected override void Attack()
@@ -55,16 +60,26 @@ namespace Game.Enemies
 			EventManager.instance.enemyShootingEvent.Invoke(bulletGens, bullet);
 		}
 
-		protected override void SpecialAttack()
+		public override void SpecialAttack()
 		{
-			//Special Attack - un ataque kamikaze.
-			//Explode();
 		}
 
-		protected virtual void Explode()
+		protected IEnumerator Explode()
 		{
-			//explotar
+			Debug.Log("Enemy is dead");
+			Dropping(droppingObjects);
+			yield return null;
+			gameObject.SetActive(false);
 		}
+
+		IEnumerator ExplodeWithAnimation()
+		{
+			anim.Play(_deathAnim);
+			yield return new WaitForSeconds(_deathTime);
+			Debug.Log("Mini Enemy Exploded with animations");
+			StartCoroutine(Explode());
+		}
+
 
 		private void OnTriggerEnter2D(Collider2D collision)
 		{

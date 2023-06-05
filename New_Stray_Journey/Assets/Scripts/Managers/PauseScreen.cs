@@ -47,13 +47,11 @@ public class PauseScreen : MonoBehaviour
 	{
 		Time.timeScale = 0;
 		_pauseImage.SetActive(true);
-		Debug.Log("Game Paused");
 	}
 
 	public  void ResumeGame()
 	{
 		Time.timeScale = 1;
 		_pauseImage.SetActive(false);
-		Debug.Log("Game Continued");
 	}
 }

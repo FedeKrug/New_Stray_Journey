@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
-
+using Game.SO;
 
 [DefaultExecutionOrder(-100)]
 public class EventManager : MonoBehaviour
@@ -12,8 +12,8 @@ public class EventManager : MonoBehaviour
 	#region Singleton & Awake
 	public static EventManager instance;
 
-    void Awake()
-    {
+	void Awake()
+	{
 		if (instance == null)
 		{
 			instance = this;
@@ -35,8 +35,25 @@ public class EventManager : MonoBehaviour
 
 	public ScoreEvent scoreEvent = new ScoreEvent();
 
+	public HookEvent playerHookEvent = new HookEvent();
+
+	public SaveScoreEvent saveScoreEvent = new SaveScoreEvent();
+
+	public UIEvent healthBarEvent = new UIEvent();
+	public UIEvent specialUIEvent = new UIEvent();
+	public UIEvent enemyCounterUIEvent = new UIEvent();
+
+	public SpecialAttackUIEvent specialAttackUIEvent = new SpecialAttackUIEvent();
+	public SpecialAttackUIEvent specialAttackUIIConEvent = new SpecialAttackUIEvent();
 }
 
 public class ShootEvent : UnityEvent<List<GameObject>, GameObject> { } //1- de donde sale el disparo 2- cual es el disparo
-public class HealthEvent : UnityEvent<float> { } //la vida que se le da o quita al personaje
+public class HealthEvent : UnityEvent<float> { } 
 public class ScoreEvent : UnityEvent<string, TextMeshProUGUI> { }
+public class HookEvent : UnityEvent<GameObject, GameObject> { }
+
+public class SaveScoreEvent : UnityEvent<int, TextMeshProUGUI> { }
+
+public class UIEvent : UnityEvent { }
+
+public class SpecialAttackUIEvent : UnityEvent <Image> {}

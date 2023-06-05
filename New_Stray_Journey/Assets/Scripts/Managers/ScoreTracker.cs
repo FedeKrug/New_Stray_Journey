@@ -2,53 +2,58 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Game.Player;
-using UnityEngine.UI;
+using Game.SO;
 using TMPro;
 
 
 public class ScoreTracker : MonoBehaviour
 {
+	public static ScoreTracker instance;
+
 	[SerializeField] private TextMeshProUGUI _scoreText;
 	[SerializeField] private PlayerMovement _playerRef;
-	[SerializeField] private int _score;
+	[SerializeField] private IntSO _scoreToSave;
+	[SerializeField] public int score;
+
+
 	void Awake()
 	{
-
-	}
-
-	private void OnTriggerEnter2D(Collider2D collision)
-	{
-		if (collision.GetComponent<Collectable>()!=null)
+		if (instance == null)
 		{
-
+			instance = this;
+		}
+		else
+		{
+			Destroy(gameObject);
 		}
 	}
-
-	void Update()
+	private void OnEnable()
 	{
-
+		EventManager.instance.scoreEvent.AddListener(UpdateScoreHandler);
+		EventManager.instance.saveScoreEvent.AddListener(SaveScoreHandler);
 	}
 
-	public void IncreaseScore()
+	private void OnDisable()
 	{
-		EventManager.instance.scoreEvent.Invoke(_score.ToString(), _scoreText);
+		EventManager.instance.scoreEvent.RemoveListener(UpdateScoreHandler);
+		EventManager.instance.saveScoreEvent.RemoveListener(SaveScoreHandler);
+	}
+	public void SaveScoreHandler(int value, TextMeshProUGUI savedScoreUI)
+	{
+
+		_scoreToSave.value = score;
+		value = _scoreToSave.value;
+
+		savedScoreUI.text = value.ToString();
 	}
 
-
-}
-
-
-public interface Collectable
-{
-	public void Collect();
-}
-
-public interface Interactable
-{
-	public void Interact();
-}
-
-public interface Destroyable
-{
-	public void Destroy();
+	public void UpdateScoreHandler(string scoreText, TextMeshProUGUI scoreUI)
+	{
+		_scoreText.text = $"Score: {score}";
+	}
+	public void IncreaseScore(int coinScore)
+	{
+		score += coinScore;
+		EventManager.instance.scoreEvent.Invoke(score.ToString(), _scoreText);
+	}
 }

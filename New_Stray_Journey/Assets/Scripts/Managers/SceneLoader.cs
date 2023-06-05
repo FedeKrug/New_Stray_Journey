@@ -1,3 +1,5 @@
+using Game.SO;
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -8,6 +10,7 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
 	public static SceneLoader instance;
+	[SerializeField] private FloatSO _playerHealth;
 	void Awake()
 	{
 		if (!instance)
@@ -23,6 +26,11 @@ public class SceneLoader : MonoBehaviour
 	public void ChangeScene(string sceneName)
 	{
 		SceneManager.LoadScene(sceneName);
+		Time.timeScale = 1;
+		if (_playerHealth.value <=0)
+		{
+			_playerHealth.value = 1000;
+		}
 	}
 
 	public void ExitGame()
@@ -33,5 +41,10 @@ public class SceneLoader : MonoBehaviour
 #endif
 	}
 
-	
+	public void ReloadScene()
+	{
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		_playerHealth.value = 1000;
+		PauseScreen.instance.ResumeGame();
+	}
 }

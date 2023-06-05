@@ -1,22 +1,40 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 namespace Game.Enemies
 {
 	public class Obstacle : PassiveEnemy
 	{
+		[SerializeField] private GameObject _explosion;
+		[SerializeField] protected AudioClip explosionSound;
+		[SerializeField] protected GameObject particlesExplosion;
+		[SerializeField] protected SpriteRenderer spriteR, miniMapSprite;
 		public override void Death(EnemyHealth enemyHealth)
 		{
-			//Destroyed Obstacle
+			StartCoroutine(Explode());
 		}
 
 		protected override void Attack()
 		{
-			//Idle Damage if it has 
+			StaticDamage();
 		}
 
-		protected override void SpecialAttack()
+		public override void SpecialAttack() { }
+
+		protected override IEnumerator Explode()
 		{
-			//Damage with the obstacle destruction
+			_explosion.SetActive(true);
+			particlesExplosion.SetActive(true);
+			this.GetComponent<Collider2D>().enabled = false;
+			aSource.PlayOneShot(explosionSound);
+			yield return null;
+			spriteR.enabled = false;
+			miniMapSprite.enabled = false;
+			while (aSource.isPlaying)
+			{
+				yield return null;
+			}
+			this.gameObject.SetActive(false);
 		}
 	}
 }

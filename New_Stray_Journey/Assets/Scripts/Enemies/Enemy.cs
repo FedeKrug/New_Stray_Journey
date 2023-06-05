@@ -8,13 +8,15 @@ namespace Game.Enemies
 	public abstract class Enemy : MonoBehaviour
 	{
 		[SerializeField, Range(0, 10)] protected float idleDamage;
-		[SerializeField, Range(0, 10)] protected float timeToSpecial;
+		[SerializeField, Range(0, 10)] protected float timeToSpecial, timeOfSpecial;
+		[SerializeField] protected float movementSpeed;
 		protected float idleTime;
 		[SerializeField] protected EnemyHealth enemyLife;
-		//[SerializeField] protected EnemyRangeDetector rangeOfView;
 		public bool inSpecial, specialReady;
 		public bool inAttackRange, playerDetected;
-
+		[SerializeField] protected Animator anim;
+		[SerializeField] protected AudioSource aSource;
+		[SerializeField] protected List<GameObject> droppingObjects;
 
 		void Awake()
 		{
@@ -23,9 +25,19 @@ namespace Game.Enemies
 
 		public abstract void Death(EnemyHealth enemyHealth);
 		protected abstract void Attack();
-		protected abstract void SpecialAttack();
+		public abstract void SpecialAttack();
 
+		protected virtual void Update()
+		{
+			if (PlayerManager.instance.playerDead)
+			{
+				if (GetComponent<StateManager>())
+				{
+					GetComponent<StateManager>().enabled = false;
 
+				}
+			}
+		}
 		public void StaticDamage()
 		{
 			PlayerManager.instance.TakeDamage(idleDamage);
@@ -37,22 +49,18 @@ namespace Game.Enemies
 			specialReady = true;
 			yield return null;
 			SpecialAttack();
+			yield return new WaitForSeconds(timeOfSpecial);
+			specialReady = false;
+
+		}
+		protected virtual void Dropping(List<GameObject> droppedObjects)
+		{
+			//spawner de objetos aleatoriamente en un rango definido por cada enemigo
+			for (int i = 0; i < droppedObjects.Count; i++)
+			{
+				Instantiate(droppedObjects[i], transform.position, droppedObjects[i].transform.rotation);
+			}
 		}
 
 	}
-
-	#region Interfaces
-	public interface IDamagable
-	{
-		public void TakeDamage();
-		public void Death();
-	}
-
-	public interface IAttacks
-	{
-		public abstract void Attack();
-		public abstract void SpecialAttack();
-	}
-	#endregion
-
 }

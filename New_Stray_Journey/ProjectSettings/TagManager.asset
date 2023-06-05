@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - WayPoint
   layers:
   - Default
   - TransparentFX
@@ -16,6 +17,14 @@ TagManager:
   - Enemies
   - Player
   - BackgroundElements
+  - RangeOfView
+  - BlackHole
+  - Interactables
+  - Collectables
+  - Obstacle
+  - WayPoints
+  - SpecialEffects
+  - Vortex
   - 
   - 
   - 
@@ -29,15 +38,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - MiniMapa
   m_SortingLayers:
   - name: Default
     uniqueID: 0

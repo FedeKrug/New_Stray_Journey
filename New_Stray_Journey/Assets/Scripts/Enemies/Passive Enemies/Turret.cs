@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace Game.Enemies
 {
@@ -7,15 +8,22 @@ namespace Game.Enemies
 	{
 		[SerializeField] protected List<GameObject> bulletGens;
 		[SerializeField] protected GameObject bullet;
-
-		private void Update()
+		[SerializeField, Range(-360, 360)] private float _specialSpeed;
+		[SerializeField, Range(0, 5)] private float _specialFireRate;
+		private float _minSpeed, _minFireRate;
+		private void Awake()
+		{
+			_minSpeed = movementSpeed;
+			_minFireRate = remainingTime;
+		}
+		protected override void Update()
 		{
 			timeRate -= Time.deltaTime;
 			if (playerDetected)
 			{
 				Move();
 			}
-			if (inAttackRange)
+			if (inAttackRange && !specialReady)
 			{
 				ConstantAttack();
 			}
@@ -23,6 +31,8 @@ namespace Game.Enemies
 
 		private void ConstantAttack()
 		{
+			movementSpeed = _minSpeed;
+			remainingTime = _minFireRate;
 			if (timeRate <= 0)
 			{
 				timeRate = remainingTime;
@@ -32,25 +42,31 @@ namespace Game.Enemies
 
 		public override void Death(EnemyHealth enemyHealth)
 		{
-
+			StartCoroutine(Explode());
 		}
 
 
-		public void Move() //la torreta girara constantemente cuando el player se acerca a ella
+		public void Move()
 		{
-			this.transform.eulerAngles += Vector3.forward * speed * Time.deltaTime;
+			this.transform.eulerAngles += Vector3.forward * movementSpeed * Time.deltaTime;
 		}
 
 		protected override void Attack()
 		{
 			EventManager.instance.enemyShootingEvent.Invoke(bulletGens, bullet);
 		}
-		protected override void SpecialAttack()
+		public override void SpecialAttack()
 		{
-
+			StartCoroutine(SpecialShooting());
 		}
-		protected void LookAtTarget(Transform target)
+		
+		IEnumerator SpecialShooting()
 		{
+			movementSpeed = _specialSpeed;
+			remainingTime = _specialFireRate;
+			Attack();
+			
+			yield return null;
 
 		}
 	}
